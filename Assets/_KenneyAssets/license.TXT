@@ -1,5 +1,0 @@
-all CC0
-
-
-example:
-https://www.kenney.nl/assets/blaster-kit
