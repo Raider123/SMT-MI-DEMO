@@ -11,6 +11,15 @@ public class TargetScript : MonoBehaviour
     [Tooltip("Amount of seconds a target stays down before swinging back up 'reanimating' itself. If '<=0', the target will permanently stay down.")]
     [SerializeField] private int downtime = 5;
 
+    [Tooltip("Parent GameObject that is to be rotated on Collicion. If left empty, script will assign next parent in hierarchy.")]
+    [SerializeField] private GameObject parent;
+
+
+    private void Start()
+    {
+        if (parent == null) parent = transform.parent.gameObject;
+    }
+
     // Catch Collision and make target fall back.
     private void OnCollisionEnter(Collision collision)
     {
@@ -21,7 +30,7 @@ public class TargetScript : MonoBehaviour
 
             // tween the target into down position
             LeanTween.cancelAll(gameObject);
-            LeanTween.rotate(gameObject, new Vector3(90, 0, 0), tweenTime).setEase(LeanTweenType.easeOutBounce);
+            LeanTween.rotate(parent, new Vector3(90, 0, 0), tweenTime).setEase(LeanTweenType.easeOutBounce);
 
             if (downtime > 0) StartCoroutine(ReactivateTarget());
         }
@@ -33,7 +42,7 @@ public class TargetScript : MonoBehaviour
 
         // tweeen target up
         LeanTween.cancelAll();
-        LeanTween.rotate(gameObject, Vector3.zero, tweenTime).setEase(LeanTweenType.easeOutBounce);
+        LeanTween.rotate(parent, Vector3.zero, tweenTime).setEase(LeanTweenType.easeOutBounce);
 
         isUp = true;
     }
