@@ -5603,12 +5603,12 @@ GameObject:
   - component: {fileID: 1085439597}
   - component: {fileID: 1085439596}
   m_Layer: 0
-  m_Name: XR Origin
+  m_Name: XR Origin (Hand Gestures Sample)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1085439596
 MonoBehaviour:
   m_ObjectHideFlags: 0
