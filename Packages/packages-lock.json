@@ -173,7 +173,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.hands": {
-      "version": "1.4.0-pre.1",
+      "version": "1.4.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -186,7 +186,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.interaction.toolkit": {
-      "version": "3.0.0-pre.1",
+      "version": "3.0.0-pre.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
