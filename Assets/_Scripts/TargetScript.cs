@@ -41,7 +41,7 @@ public class TargetScript : MonoBehaviour
         yield return new WaitForSeconds(downtime);
 
         // tweeen target up
-        LeanTween.cancelAll();
+        LeanTween.cancelAll(gameObject);
         LeanTween.rotate(parent, Vector3.zero, tweenTime).setEase(LeanTweenType.easeOutBounce);
 
         isUp = true;
