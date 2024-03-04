@@ -29,7 +29,7 @@ public class TargetScript : MonoBehaviour
             isUp = false;
 
             // tween the target into down position
-            LeanTween.cancelAll(gameObject);
+            LeanTween.cancel(parent);
             LeanTween.rotate(parent, new Vector3(90, 0, 0), tweenTime).setEase(LeanTweenType.easeOutBounce);
 
             if (downtime > 0) StartCoroutine(ReactivateTarget());
@@ -41,7 +41,7 @@ public class TargetScript : MonoBehaviour
         yield return new WaitForSeconds(downtime);
 
         // tweeen target up
-        LeanTween.cancelAll(gameObject);
+        LeanTween.cancel(parent);
         LeanTween.rotate(parent, Vector3.zero, tweenTime).setEase(LeanTweenType.easeOutBounce);
 
         isUp = true;
