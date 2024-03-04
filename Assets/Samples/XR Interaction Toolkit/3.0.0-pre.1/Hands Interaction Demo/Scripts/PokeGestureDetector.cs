@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.Events;
-#if XR_HANDS_1_1_OR_NEWER
+//#if XR_HANDS_1_1_OR_NEWER
 using UnityEngine.XR.Hands;
-#endif
+//#endif
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
 {
