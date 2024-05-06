@@ -6,9 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SMT_NoiseTest.unity
-    guid: 15f7ea21fbc654d46b928c365806b311
+    path: Assets/Scenes/new_start_scene.unity
+    guid: bb50c4593c480314cb0e6e836181ce07
+  - enabled: 1
+    path: Assets/Scenes/new_trial_scene.unity
+    guid: 312678101602e204a8240c5378ad2bb7
+  - enabled: 1
+    path: Assets/Scenes/new_break_scene.unity
+    guid: b29f2848a7f725b4f9c5c8e1afe95096
+  - enabled: 1
+    path: Assets/Scenes/new_end_scene.unity
+    guid: d94854b6467048049879868ff111c781
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d9e40bc02b326104e8b998780e557a2c,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 322aa9ea0a2550647800bac0e923e874,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: bc610900938ed6e4db4179f0d1c37df0,

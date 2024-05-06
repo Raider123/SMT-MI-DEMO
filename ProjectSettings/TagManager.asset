@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - target
+  - left_hand_mi
+  - right_hand_mi
+  - target_choice
   layers:
   - Default
   - TransparentFX

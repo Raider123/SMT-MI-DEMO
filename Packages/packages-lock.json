@@ -65,6 +65,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.recorder": {
+      "version": "4.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "14.0.10",
       "depth": 1,
@@ -173,7 +182,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.hands": {
-      "version": "1.4.0",
+      "version": "1.4.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -220,6 +229,15 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0",
         "com.unity.xr.legacyinputhelpers": "2.1.7"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.oculus": {
+      "version": "4.1.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "4.4.0"
       },
       "url": "https://packages.unity.com"
     },
