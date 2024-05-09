@@ -10231,6 +10231,11 @@ PrefabInstance:
       propertyPath: m_RaycastMask.m_Bits
       value: 33
       objectReference: {fileID: 0}
+    - target: {fileID: 1820897918385990095, guid: d6878e1999eb4b44a9f5a263af86c185,
+        type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10335,7 +10340,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HandMeshMaterial
       value: 
-      objectReference: {fileID: -3963241562183589234, guid: 23c7905b2fa929747b73a516880e16bb,
+      objectReference: {fileID: -6126091556477775235, guid: 27522214b9b3cb54e924f04d0fa1ad76,
         type: 3}
     - target: {fileID: 4474634296417459963, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}

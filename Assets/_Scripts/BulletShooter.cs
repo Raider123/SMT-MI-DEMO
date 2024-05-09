@@ -5,10 +5,14 @@ using UnityEngine;
 public class BulletShooter : MonoBehaviour
 {
     [Tooltip("Bullet Prefab which will be shot when Finge Gun Pose Ends.")]
-    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
 
     [Tooltip("Force value that determins how fast the bullet will be shot.")]
     [SerializeField] private float shotStrength = 100f;
+
+    [SerializeField] private GameObject raycastObject; // Das GameObject, das den Raycast durchführt
+
+    [SerializeField] private float maxDistance = 100f; // Maximale Entfernung für den Raycast
 
     [Tooltip("Transform that holds the bullets until they are destroyed.")]
     private Transform bulletHolder;
@@ -16,8 +20,39 @@ public class BulletShooter : MonoBehaviour
     // Public Method to shoot Bullet prefab when called.
     public void ShootBullet()
     {
+        /*
         Rigidbody bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
         bullet.AddForce(transform.forward * shotStrength);
+        Destroy(bullet.gameObject, 5f);
+        */
+
+        // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
+        Rigidbody bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
+        bullet.AddForce(transform.forward * shotStrength, ForceMode.Impulse);
+
+        // Führen Sie den Raycast vom raycastObject aus
+        if (Physics.Raycast(raycastObject.transform.position, raycastObject.transform.forward, out RaycastHit hitInfo, maxDistance))
+        {
+            // Erhalten Sie die Richtung zum getroffenen Punkt
+            Vector3 direction = hitInfo.point - transform.position;
+
+            // Erstellen Sie ein Ziel, das ein wenig über dem getroffenen Punkt liegt (optional)
+            Vector3 target = hitInfo.point; // + hitInfo.normal * 0.1f;
+
+            // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
+            bullet.AddForce(direction.normalized * shotStrength * 2, ForceMode.Impulse);
+
+            // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
+            bullet.transform.LookAt(target);
+        }
+        else
+        {
+            // Wenn der Raycast kein Ziel trifft, fahren Sie das Bullet geradeaus fort
+            //bullet.AddForce(transform.forward * shotStrength, ForceMode.Impulse);
+            Destroy(bullet.gameObject, 0f);
+        }
+
+        // Zerstören Sie das Bullet nach einer bestimmten Zeit
         Destroy(bullet.gameObject, 5f);
     }
 

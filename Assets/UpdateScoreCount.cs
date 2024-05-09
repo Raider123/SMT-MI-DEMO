@@ -8,8 +8,8 @@ public class UpdateScoreCount : MonoBehaviour
     void Start()
     {
         int integerValue = PlayerPrefs.GetInt("achievement_score");
-        Debug.Log("Integer-Wert aus vorheriger Szene: " + integerValue);
+        float accuracy = PlayerPrefs.GetFloat("accuracy");
 
-        score_text.text = "Punktzahl: " + integerValue.ToString();
+        score_text.text = "Punktzahl: " + integerValue.ToString() + "\nGenauigkeit: " + "\n" + accuracy.ToString() + " %";
     }
 }

@@ -22,6 +22,9 @@ public class Break_Timer : MonoBehaviour
     {
         isCounting = true;
         currentTime = 0f;
+
+        PlayerPrefs.SetInt("Max_num_of_trials", max_num_of_trials);
+        PlayerPrefs.Save();
     }
 
     void Update()

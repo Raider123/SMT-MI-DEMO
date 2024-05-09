@@ -9,6 +9,7 @@ public class update_total_score : MonoBehaviour
     void Start()
     {
         int integerValue = PlayerPrefs.GetInt("achievement_score");
-        score_text.text = "Insgesamte Punktzahl: " + integerValue.ToString();
+        float total_acc = PlayerPrefs.GetFloat("Total_accuracy") / PlayerPrefs.GetInt("Max_num_of_trials"); 
+        score_text.text = "Totale Punktzahl: " + integerValue.ToString() + "\nTotale Genauigkeit: " + "\n" + total_acc + " %";
     }
 }

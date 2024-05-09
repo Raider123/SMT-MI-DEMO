@@ -10198,7 +10198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HandMeshMaterial
       value: 
-      objectReference: {fileID: -3963241562183589234, guid: 23c7905b2fa929747b73a516880e16bb,
+      objectReference: {fileID: -6126091556477775235, guid: 27522214b9b3cb54e924f04d0fa1ad76,
         type: 3}
     - target: {fileID: 4474634296417459963, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
@@ -21349,7 +21349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afd596e19e51154cab1dac94ae1b445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 3
+  countdownTime: 4
   timeText: {fileID: 2034791942}
   max_num_of_trials: 3
   trial_scene_index: 1

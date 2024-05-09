@@ -11,6 +11,7 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
         /// <summary>
         /// The type of velocity to visualize.
         /// </summary>
+        const int test = 0;
         public enum VelocityType
         {
             /// <summary>
@@ -49,6 +50,16 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
         [Tooltip("Tells the Hand Visualizer to draw the meshes for the hands.")]
         bool m_DrawMeshes;
         bool m_PreviousDrawMeshes;
+
+        public void change_left_hand_mesh(GameObject left_hand_mesh)
+        {     
+                m_LeftHandMesh = left_hand_mesh;        
+        }
+
+        public void change_right_hand_mesh(GameObject right_hand_mesh)
+        {
+                m_LeftHandMesh = right_hand_mesh;       
+        }
 
         /// <summary>
         /// Tells the Hand Visualizer to draw the meshes for the hands.
