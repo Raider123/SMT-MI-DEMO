@@ -5,16 +5,16 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Start_Timer : MonoBehaviour
+public class Start_Trial_Timer : MonoBehaviour
 {
     public float countdownTime = 60f; // Zeit in Sekunden für den Countdown
     public TMP_Text timeText; // Referenz auf das Text-Objekt, das den Countdown anzeigt
-    public int next_sceneIndex;
+    public int next_scene_index;
 
     private float currentTime = 0f;
     private bool isCounting = false;
 
-    void Update()
+    private void Update()
     {
         if (isCounting)
         {
@@ -25,15 +25,8 @@ public class Start_Timer : MonoBehaviour
                 remainingTime = 0;
                 isCounting = false;
 
-                // Delete the score of the preceding round by deleting the playerprefs key
-                PlayerPrefs.DeleteKey("achievement_score");
-
-                // This Timer initiates Level 1 (Normal_Level)
-                PlayerPrefs.SetInt("Level", 1);
-                PlayerPrefs.Save();
-
-                // Load the next scene
-                SceneManager.LoadScene(next_sceneIndex);
+                // Lade das Targetchooser Skript neu (ohne die Szene komplett neuzuladen)
+                SceneManager.LoadScene(next_scene_index);
             }
 
             UpdateCountdownUI(remainingTime);
@@ -46,9 +39,10 @@ public class Start_Timer : MonoBehaviour
         currentTime = 0f;
     }
 
-    void UpdateCountdownUI(float time)
+    private void UpdateCountdownUI(float time)
     {
         int seconds = Mathf.FloorToInt(time % 60);
         timeText.text = seconds.ToString();
     }
 }
+

@@ -8,8 +8,7 @@ public class update_total_score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int integerValue = PlayerPrefs.GetInt("achievement_score");
-        float total_acc = PlayerPrefs.GetFloat("Total_accuracy") / PlayerPrefs.GetInt("Max_num_of_trials"); 
-        score_text.text = "Totale Punktzahl: " + integerValue.ToString() + "\nTotale Genauigkeit: " + "\n" + total_acc + " %";
+        float actual_score = PlayerPrefs.GetFloat("achievement_score");
+        score_text.text = "Punktzahl: " + actual_score.ToString();
     }
 }

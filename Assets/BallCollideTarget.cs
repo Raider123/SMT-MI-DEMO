@@ -1,8 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class BallCollideTarget : MonoBehaviour
 {
@@ -21,8 +20,9 @@ public class BallCollideTarget : MonoBehaviour
 
     [SerializeField] private GameObject gesture_detection; // Instanz eines Gesture-Detection Objekts, um die Schussmöglichkeiten nach der Kollision einzuschränken
 
-    static int achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
-    static float total_accuracy; // Berechnet die Genauigkeit der Schussversuche
+    [SerializeField] private GameObject Point_display; // Nach dem erfolgreichen Abschuss einer Zielscheibe direkt die Punktzahl anzeigen
+
+    static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,14 @@ public class BallCollideTarget : MonoBehaviour
             gesture_detection.gameObject.SetActive(false);
 
             // Kalkuliere die Punktzahl basierend auf der Entfernung vom Mittelpunkt (x-Koordinate)
-            float accuracy = calculateAccuracy(selfreference, collision.gameObject);
+            float game_points = calculatePoints(selfreference, collision.gameObject);
+
+            // Erhöhe den erreichten Punktestand
+            achievement_score += game_points;
+            PlayerPrefs.SetFloat("achievement_score", achievement_score);
+
+            // Speichere die Szenenübergreifenden Variablen
+            PlayerPrefs.Save();
 
             // Play Collision Sound
             audioSource.Play();
@@ -49,26 +56,21 @@ public class BallCollideTarget : MonoBehaviour
             // Destroy the object, if needed
             Destroy(collision.gameObject);
 
-            // Shrink all the objects upon collision
+            // Shrink the target object upon collision
             StartCoroutine(ShrinkOverTime(selfreference));
+            // Display the reached points immediately with a growing animation
+            GameObject new_point_display = Instantiate(Point_display, selfreference.transform.position, Point_display.transform.rotation);
+            new_point_display.GetComponent<TextMeshPro>().text = game_points.ToString();
+            StartCoroutine(GrowOverTime(new_point_display));
+
+            //Shrinking all the objects upon collision
             for (int i = 0; i < objectsToReplace.Length; i++)
             {
                 StartCoroutine(ShrinkOverTime(objectsToReplace[i]));
             }
-
-            // Erhöhe den erreichten Punktestand
-            achievement_score += 1;
-            PlayerPrefs.SetInt("achievement_score", achievement_score);
-            // Stelle die aktuelle Genauigkeit dar
-            PlayerPrefs.SetFloat("accuracy", accuracy);
-            // Berechne fortlaufend die gesamte Genauigkeit (später durch max_trial_num die Mittelung!)
-            total_accuracy += accuracy;
-            PlayerPrefs.SetFloat("Total_accuracy", total_accuracy);
-            // Speichere die Szenenübergreifenden Variablen
-            PlayerPrefs.Save();
-
+           
             // Starte den Countdown Timer zum Laden der nächsten Szene
-            countDown.GetComponent<Start_Timer>().StartCountdown();
+            countDown.GetComponent<Start_Trial_Timer>().StartCountdown();
         }
     }
 
@@ -99,7 +101,35 @@ public class BallCollideTarget : MonoBehaviour
         selfreference.transform.localScale = targetScale;
     }
 
-    private float calculateAccuracy(GameObject object1, GameObject object2)
+    IEnumerator GrowOverTime(GameObject selfreference)
+    {
+        float grow_duration = 1.0f;
+        // Startskalierung des Objekts
+        Vector3 startScale = Vector3.zero;
+
+        // Ziel-Skalierung des Objekts (z. B. unsichtbar klein)
+        Vector3 targetScale = selfreference.transform.localScale;
+
+        // Zeit, die seit Beginn der Animation vergangen ist
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < grow_duration)
+        {
+            // Lerp (lineare Interpolation) zwischen Start- und Ziel-Skalierung basierend auf der aktuellen Zeit
+            selfreference.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedTime / grow_duration);
+
+            // Aktualisiere die vergangene Zeit
+            elapsedTime += Time.deltaTime;
+
+            // Warte eine Frame, bevor die nächste Aktualisierung durchgeführt wird
+            yield return null;
+        }
+
+        // Stelle sicher, dass die Skalierung am Ende genau auf das Ziel gesetzt wird
+        selfreference.transform.localScale = targetScale;
+    }
+
+    private float calculatePoints(GameObject object1, GameObject object2)
     {
         //Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
         float radius = 0.25f; // Found through an empirical process
@@ -113,7 +143,23 @@ public class BallCollideTarget : MonoBehaviour
         // Berechne den Gesamtabstand zu Radiusverhältnis
         float accuracy = Mathf.Abs(radius - Mathf.Sqrt(Mathf.Pow(yDistance, 2) + Mathf.Pow(zDistance, 2)));
 
-        float round_acc = (float)System.Math.Round(accuracy, 4);
-        return 100 - round_acc * 100;
+        float round_acc = 100 - (float)System.Math.Round(accuracy, 4) * 100;
+
+        if (round_acc > 95)
+        {
+            return 10f;
+
+        }else if(round_acc <= 95 && round_acc > 90)
+        {
+            return 8f;
+
+        }else if(round_acc <= 90 && round_acc > 85)
+        {
+            return 6f;
+
+        }else 
+        {
+            return 4f;
+        }
     }
 }

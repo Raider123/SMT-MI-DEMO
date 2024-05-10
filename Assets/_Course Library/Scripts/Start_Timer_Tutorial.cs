@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Start_Timer : MonoBehaviour
+public class Start_Timer_Tutorial : MonoBehaviour
 {
     public float countdownTime = 60f; // Zeit in Sekunden für den Countdown
     public TMP_Text timeText; // Referenz auf das Text-Objekt, das den Countdown anzeigt
@@ -28,8 +28,8 @@ public class Start_Timer : MonoBehaviour
                 // Delete the score of the preceding round by deleting the playerprefs key
                 PlayerPrefs.DeleteKey("achievement_score");
 
-                // This Timer initiates Level 1 (Normal_Level)
-                PlayerPrefs.SetInt("Level", 1);
+                // This Timer initiates Level 0 (Tutorial)
+                PlayerPrefs.SetInt("Level", 0);
                 PlayerPrefs.Save();
 
                 // Load the next scene

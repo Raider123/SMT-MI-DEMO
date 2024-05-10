@@ -7,9 +7,7 @@ public class UpdateScoreCount : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int integerValue = PlayerPrefs.GetInt("achievement_score");
-        float accuracy = PlayerPrefs.GetFloat("accuracy");
-
-        score_text.text = "Punktzahl: " + integerValue.ToString() + "\nGenauigkeit: " + "\n" + accuracy.ToString() + " %";
+        float actual_score = PlayerPrefs.GetFloat("achievement_score");
+        score_text.text = "Punktzahl: " + actual_score.ToString();
     }
 }

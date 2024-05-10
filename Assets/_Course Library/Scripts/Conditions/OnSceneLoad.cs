@@ -19,14 +19,14 @@ public class OnSceneLoad : MonoBehaviour
 
     private GameObject new_target; // The final target that is created at the exchanged position 
 
-    void Start()
+    public void Start()
     {
         // Eine kurze Verzögerung, um sicherzustellen, dass alle Objekte initialisiert sind
         objectsToReplace = new GameObject[9];
         replacementObjects = new GameObject[2];
     }
 
-    private void Awake()
+    public void Awake()
     { 
         SceneManager.sceneLoaded += PlayEvent;
 
@@ -59,19 +59,6 @@ public class OnSceneLoad : MonoBehaviour
         {
             StartCoroutine(GrowOverTime(objectsToReplace[i]));
         }
-    }
-
-    public void shrink_all()
-    {
-        // Shrink all the targets over time
-        //StartCoroutine(ShrinkOverTime(new_target));
-
-        /*
-        for (int i = 0; i < objectsToReplace.Length; i++)
-        {
-            StartCoroutine(ShrinkOverTime(objectsToReplace[i]));
-        }
-        */
     }
 
     private void PlayEvent(Scene scene, LoadSceneMode mode)

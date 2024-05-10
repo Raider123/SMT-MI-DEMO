@@ -45,7 +45,12 @@ public class Break_Timer : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(actual_trial_num);
+                    // Check whether the last trial was a tutorial
+                    if (PlayerPrefs.GetInt("Level") == 0)
+                    {
+                        // If the preceding trial was a tutorial, switch to a normal trial (Level 1)
+                        PlayerPrefs.SetInt("Level", 1);
+                    }
                     // Increase the actual trial num
                     actual_trial_num += 1;
                     // Load the trial scene again
