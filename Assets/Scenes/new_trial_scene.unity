@@ -2744,6 +2744,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
         type: 3}
+      propertyPath: shoot_audio
+      value: 
+      objectReference: {fileID: 598432520}
+    - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
+        type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 228724407}
@@ -10809,6 +10814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
+      propertyPath: shoot_audio
+      value: 
+      objectReference: {fileID: 1923991816}
+    - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
+        type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 1299912463}
@@ -15878,18 +15888,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1923991815}
         m_TargetAssemblyTypeName: BulletShooter, Assembly-CSharp
         m_MethodName: ShootBullet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1923991816}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32270,18 +32268,6 @@ MonoBehaviour:
       - m_Target: {fileID: 598432519}
         m_TargetAssemblyTypeName: BulletShooter, Assembly-CSharp
         m_MethodName: ShootBullet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 598432520}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

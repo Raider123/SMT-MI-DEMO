@@ -10,11 +10,17 @@ public class BulletShooter : MonoBehaviour
     [Tooltip("Force value that determins how fast the bullet will be shot.")]
     [SerializeField] private float shotStrength = 100f;
 
-    [SerializeField] private GameObject raycastObject; // Das GameObject, das den Raycast durchführt
+    [Tooltip("Das GameObject, das den Raycast durchführt")]
+    [SerializeField] private GameObject raycastObject; 
 
-    [SerializeField] private float maxDistance = 100f; // Maximale Entfernung für den Raycast
+    [Tooltip("Maximale Entfernung für den Raycast")]
+    [SerializeField] private float maxDistance = 20f; 
 
-    [SerializeField] private OnSceneLoad tchooser_script; // Eine Instanz des Targetchooser Skripts zum Erhöhen der Munition etc.
+    [Tooltip("Eine Instanz des Targetchooser Skripts zum Erhöhen der Munition etc.")]
+    [SerializeField] private OnSceneLoad tchooser_script;
+
+    [Tooltip("Die Audiosource, die beim Abschuss gespielt wird")]
+    [SerializeField] private AudioSource shoot_audio;
 
     [Tooltip("Transform that holds the bullets until they are destroyed.")]
     private Transform bulletHolder;
@@ -53,6 +59,9 @@ public class BulletShooter : MonoBehaviour
             //bullet.AddForce(transform.forward * shotStrength, ForceMode.Impulse);
             Destroy(bullet.gameObject, 0f);
         }
+
+        // Spiele den Audioclip ab
+        shoot_audio.Play();
 
         // Erhöhe die Anzahl der verschossenen Munition extern
         tchooser_script.ammo += 1;
