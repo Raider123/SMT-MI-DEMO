@@ -48,7 +48,7 @@ public class Break_Timer : MonoBehaviour
                     // Check whether the last trial was a tutorial
                     if (PlayerPrefs.GetInt("Level") == 0)
                     {
-                        // If the preceding trial was a tutorial, switch to a normal trial (Level 1)
+                        // If the preceding trial was a tutorial, switch to a normal trial (Level 1) (We only show the tutorial in the very first trial)
                         PlayerPrefs.SetInt("Level", 1);
                     }
                     // Increase the actual trial num

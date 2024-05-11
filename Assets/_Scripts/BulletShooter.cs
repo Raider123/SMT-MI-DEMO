@@ -51,7 +51,7 @@ public class BulletShooter : MonoBehaviour
             Vector3 target = hitInfo.point; // + hitInfo.normal * 0.1f;
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-            bullet.AddForce(direction.normalized * shotStrength * 2, ForceMode.Impulse);
+            bullet.AddForce(2 * shotStrength * direction.normalized, ForceMode.Impulse);
 
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
             bullet.transform.LookAt(target);

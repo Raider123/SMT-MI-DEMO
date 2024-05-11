@@ -7,20 +7,26 @@ public class OnLevelManagerStart : MonoBehaviour
     // Both Level Manager Gameobjects are deactivated by default - they are started by this script
     [SerializeField] private GameObject level0;
     [SerializeField] private GameObject level1;
+    [SerializeField] private GameObject level2;
+
     // Start is called before the first frame update
     void Awake()
     {
-        PlayerPrefs.GetInt("achievement_score");
+        int level = PlayerPrefs.GetInt("Level");
 
-        if (PlayerPrefs.GetInt("Level") == 0)
+        if (level == 0)
         {
-            // If the level is set to 0, then start the level scene
+            // Level 0: Tutorial
             level0.SetActive(true);
         }
-        else
+        else if(level == 1)
         {
-            // Otherwise start the normal trial scene
+            // Level 1: Trial 
             level1.SetActive(true);
+        }else
+        {
+            // Level 2: Small Targets (differences to Level 1)
+            level2.SetActive(true);
         }
     }
 

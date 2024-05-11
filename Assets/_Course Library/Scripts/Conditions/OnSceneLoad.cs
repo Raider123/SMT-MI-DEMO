@@ -9,9 +9,6 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class OnSceneLoad : MonoBehaviour
 {
-    // When scene is loaded and play begins
-    public UnityEvent OnLoad = new UnityEvent();
-
     [SerializeField] private GameObject[] objectsToReplace; // Array der vorhandenen GameObjekte
     [SerializeField] private GameObject[] replacementObjects; // Das Objekt, das ein vorhandenes ersetzen soll
 
@@ -32,6 +29,17 @@ public class OnSceneLoad : MonoBehaviour
         // Eine kurze Verzögerung, um sicherzustellen, dass alle Objekte initialisiert sind
         objectsToReplace = new GameObject[9];
         replacementObjects = new GameObject[2];
+
+        // Here we specifiy changes of higher levels in relation to lower levels (for example, adjusting the scale of the targets in level 2)
+        int level = PlayerPrefs.GetInt("Level");
+        if (level == 2)
+        {
+            // Change the scaling of the target objects to 1.25
+            for (int i = 0; i < objectsToReplace.Length; i++)
+            {
+                objectsToReplace[i].transform.localScale = Vector3.one * 1.25f;
+            }
+        }
     }
 
     private void Update()
@@ -41,8 +49,6 @@ public class OnSceneLoad : MonoBehaviour
 
     public void Awake()
     { 
-        SceneManager.sceneLoaded += PlayEvent;
-
         // Wähle zufällig ein vorhandenes Objekt aus
         int randomIndex = Random.Range(0, objectsToReplace.Length);
 
@@ -86,11 +92,6 @@ public class OnSceneLoad : MonoBehaviour
             left_hand_gesture_detection.SetActive(false);
 
         }
-    }
-
-    private void PlayEvent(Scene scene, LoadSceneMode mode)
-    {
-        OnLoad.Invoke();
     }
 
     IEnumerator GrowOverTime(GameObject selfreference)
