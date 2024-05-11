@@ -6,7 +6,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class BallCollideTarget : MonoBehaviour
 {
 
-    [SerializeField] private AudioSource audioSource; // Zugabe des Audioobjekts des Zielscheibenobjekts (andere Audio je Zielscheibe möglich)
+    [SerializeField] private AudioSource low_point_audio; // Audioquelle 1 bei einem niedrigen Ergebnis
+
+    [SerializeField] private AudioSource high_point_audio; // Audioquelle 2 bei einem hohen Ergebnis
+
+    [SerializeField] private AudioSource max_point_audio; // Audioquelle 3 beim höchsten Ergebnis
 
     [SerializeField] private GameObject selfreference; // Zugabe des Tags des Zielscheibenobjekts (left hand or right hand MI)
 
@@ -24,12 +28,6 @@ public class BallCollideTarget : MonoBehaviour
 
     static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-        eye_gaze_interactable = GetComponent<XRSimpleInteractable>();
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -50,8 +48,20 @@ public class BallCollideTarget : MonoBehaviour
             // Speichere die Szenenübergreifenden Variablen
             PlayerPrefs.Save();
 
-            // Play Collision Sound
-            audioSource.Play();
+            // Play Collision Sound depending on the achieved points within the game
+            if (game_points < 7)
+            {
+                low_point_audio.Play();
+
+            }
+            else if(game_points == 8)
+            {
+                high_point_audio.Play();
+            }
+            else
+            {
+                max_point_audio.Play();
+            }
 
             // Destroy the object, if needed
             Destroy(collision.gameObject);

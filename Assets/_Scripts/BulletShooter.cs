@@ -20,7 +20,10 @@ public class BulletShooter : MonoBehaviour
     [SerializeField] private OnSceneLoad tchooser_script;
 
     [Tooltip("Die Audiosource, die beim Abschuss gespielt wird")]
-    [SerializeField] private AudioSource shoot_audio;
+    [SerializeField] private AudioSource shoot_audio_1;
+
+    [Tooltip("Die zweite Audiosource, die beim Abschuss gespielt wird")]
+    [SerializeField] private AudioSource shoot_audio_2;
 
     [Tooltip("Transform that holds the bullets until they are destroyed.")]
     private Transform bulletHolder;
@@ -60,8 +63,18 @@ public class BulletShooter : MonoBehaviour
             Destroy(bullet.gameObject, 0f);
         }
 
-        // Spiele den Audioclip ab
-        shoot_audio.Play();
+        // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
+        float randomValue = Random.value;
+
+        // Überprüfe, ob die Zufallszahl kleiner als 0.5 ist
+        if (randomValue < 0.5f)
+        {
+            shoot_audio_1.Play();
+        }
+        else
+        {
+            shoot_audio_2.Play();
+        }
 
         // Erhöhe die Anzahl der verschossenen Munition extern
         tchooser_script.ammo += 1;
