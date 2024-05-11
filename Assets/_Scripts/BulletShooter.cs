@@ -14,6 +14,8 @@ public class BulletShooter : MonoBehaviour
 
     [SerializeField] private float maxDistance = 100f; // Maximale Entfernung für den Raycast
 
+    [SerializeField] private OnSceneLoad tchooser_script; // Eine Instanz des Targetchooser Skripts zum Erhöhen der Munition etc.
+
     [Tooltip("Transform that holds the bullets until they are destroyed.")]
     private Transform bulletHolder;
 
@@ -51,6 +53,9 @@ public class BulletShooter : MonoBehaviour
             //bullet.AddForce(transform.forward * shotStrength, ForceMode.Impulse);
             Destroy(bullet.gameObject, 0f);
         }
+
+        // Erhöhe die Anzahl der verschossenen Munition extern
+        tchooser_script.ammo += 1;
 
         // Zerstören Sie das Bullet nach einer bestimmten Zeit
         Destroy(bullet.gameObject, 5f);

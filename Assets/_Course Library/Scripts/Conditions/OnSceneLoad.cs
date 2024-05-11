@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,13 @@ public class OnSceneLoad : MonoBehaviour
     [SerializeField] private float grow_duration = 1.0f; // Animationsdauer zum Wachsen
     [SerializeField] private float shrink_duration = 1.0f; // Schrumpfen - Animationsdauer
 
+    [SerializeField] private TextMeshPro ammo_text; // Zum Anzeigen der verschossenen (später noch übrigen Munition)
+
+    [SerializeField] private GameObject left_hand_gesture_detection; // Gestikfunktion der linken Hand
+    [SerializeField] private GameObject right_hand_gesture_detection; // Gestikfunktion der rechten Hand
+
+    public int ammo; // Munitionszahlwert
+
     private GameObject new_target; // The final target that is created at the exchanged position 
 
     public void Start()
@@ -24,6 +32,11 @@ public class OnSceneLoad : MonoBehaviour
         // Eine kurze Verzögerung, um sicherzustellen, dass alle Objekte initialisiert sind
         objectsToReplace = new GameObject[9];
         replacementObjects = new GameObject[2];
+    }
+
+    private void Update()
+    {
+        ammo_text.text = ammo.ToString();
     }
 
     public void Awake()
@@ -59,6 +72,20 @@ public class OnSceneLoad : MonoBehaviour
         {
             StartCoroutine(GrowOverTime(objectsToReplace[i]));
         }
+
+        // Zeige das Textmeshpro Objekt in der Farbe der Zielscheibe an
+        if (new_target.tag == "left_hand_mi")
+        {
+            ammo_text.color = Color.blue;
+            right_hand_gesture_detection.SetActive(false);
+            
+
+        }else if(new_target.tag == "right_hand_mi")
+        {
+            ammo_text.color = Color.green;
+            left_hand_gesture_detection.SetActive(false);
+
+        }
     }
 
     private void PlayEvent(Scene scene, LoadSceneMode mode)
@@ -93,31 +120,5 @@ public class OnSceneLoad : MonoBehaviour
         selfreference.transform.localScale = targetScale;
     }
 
-    IEnumerator ShrinkOverTime(GameObject selfreference)
-    {
-        // Startskalierung des Objekts
-        Vector3 startScale = selfreference.transform.localScale;
-
-        // Ziel-Skalierung des Objekts (z. B. unsichtbar klein)
-        Vector3 targetScale = Vector3.zero;
-
-        // Zeit, die seit Beginn der Animation vergangen ist
-        float elapsedTime = 0.0f;
-
-        while (elapsedTime < shrink_duration)
-        {
-            // Lerp (lineare Interpolation) zwischen Start- und Ziel-Skalierung basierend auf der aktuellen Zeit
-            selfreference.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedTime / shrink_duration);
-
-            // Aktualisiere die vergangene Zeit
-            elapsedTime += Time.deltaTime;
-
-            // Warte eine Frame, bevor die nächste Aktualisierung durchgeführt wird
-            yield return null;
-        }
-
-        // Stelle sicher, dass die Skalierung am Ende genau auf das Ziel gesetzt wird
-        selfreference.transform.localScale = targetScale;
-    }
 }
 
