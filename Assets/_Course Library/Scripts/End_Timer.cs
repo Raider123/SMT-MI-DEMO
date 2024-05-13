@@ -25,9 +25,6 @@ public class End_Timer : MonoBehaviour
                 remainingTime = 0;
                 isCounting = false;
 
-                // Delete the score of the preceding round by deleting the playerprefs key
-                //PlayerPrefs.DeleteKey("achievement_score");
-
                 // Load the next scene
                 SceneManager.LoadScene(next_sceneIndex);
             }

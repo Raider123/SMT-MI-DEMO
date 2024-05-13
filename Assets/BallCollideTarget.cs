@@ -62,10 +62,7 @@ public class BallCollideTarget : MonoBehaviour
             {
                 max_point_audio.Play();
             }
-
-            // Destroy the object, if needed
-            Destroy(collision.gameObject);
-
+    
             // Shrink the target object upon collision
             StartCoroutine(ShrinkOverTime(selfreference));
             // Display the reached points immediately with a growing animation
@@ -81,6 +78,9 @@ public class BallCollideTarget : MonoBehaviour
            
             // Starte den Countdown Timer zum Laden der nächsten Szene
             countDown.GetComponent<Start_Trial_Timer>().StartCountdown();
+
+            // Destroy the object, if needed
+            Destroy(collision.gameObject);
         }
     }
 
@@ -141,8 +141,8 @@ public class BallCollideTarget : MonoBehaviour
 
     private float calculatePoints(GameObject object1, GameObject object2)
     {
-        //Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
-        float radius = 0.25f; // Found through an empirical process
+        Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
+        float radius = colliderSize.y * 0.5f; // Found through an empirical process
 
         // Berechne den y-Abstand
         float yDistance = Mathf.Abs(object1.transform.position.y - object2.transform.position.y);
@@ -157,19 +157,19 @@ public class BallCollideTarget : MonoBehaviour
 
         if (round_acc > 95)
         {
-            return 10f;
+            return 4f;
 
         }else if(round_acc <= 95 && round_acc > 90)
         {
-            return 8f;
+            return 6f;
 
         }else if(round_acc <= 90 && round_acc > 85)
         {
-            return 6f;
+            return 8f;
 
         }else 
         {
-            return 4f;
+            return 10f;
         }
     }
 }

@@ -28,33 +28,35 @@ public class BulletShooter : MonoBehaviour
     [Tooltip("Transform that holds the bullets until they are destroyed.")]
     private Transform bulletHolder;
 
+    private Rigidbody bullet;
+
     // Public Method to shoot Bullet prefab when called.
     public void ShootBullet()
     {
-        /*
+        /* Altes Skript
         Rigidbody bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
         bullet.AddForce(transform.forward * shotStrength);
         Destroy(bullet.gameObject, 5f);
         */
 
         // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
-        Rigidbody bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
+        bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
         bullet.AddForce(transform.forward * shotStrength, ForceMode.Impulse);
 
         // Führen Sie den Raycast vom raycastObject aus
         if (Physics.Raycast(raycastObject.transform.position, raycastObject.transform.forward, out RaycastHit hitInfo, maxDistance))
         {
-            // Erhalten Sie die Richtung zum getroffenen Punkt
-            Vector3 direction = hitInfo.point - transform.position;
+            // Erhalten Sie die Transform des getroffenen Gameobjects
+            Transform hitObjectTransform = hitInfo.collider.transform;
 
-            // Erstellen Sie ein Ziel, das ein wenig über dem getroffenen Punkt liegt (optional)
-            Vector3 target = hitInfo.point; // + hitInfo.normal * 0.1f;
+            // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
+            Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-            bullet.AddForce(2 * shotStrength * direction.normalized, ForceMode.Impulse);
+            bullet.AddForce(2f * shotStrength * direction.normalized, ForceMode.Impulse);
 
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
-            bullet.transform.LookAt(target);
+            bullet.transform.LookAt(hitObjectTransform.position);
         }
         else
         {
@@ -80,7 +82,34 @@ public class BulletShooter : MonoBehaviour
         tchooser_script.ammo += 1;
 
         // Zerstören Sie das Bullet nach einer bestimmten Zeit
-        Destroy(bullet.gameObject, 5f);
+        Destroy(bullet.gameObject, 3f);
+    }
+
+    private void Update()
+    { 
+        /* If we activate this method, we guide the bullet straight into the goal
+        // Führen Sie den Raycast vom raycastObject aus
+        if (Physics.Raycast(raycastObject.transform.position, raycastObject.transform.forward, out RaycastHit hitInfo, maxDistance))
+        {
+            // Erhalten Sie die Transform des getroffenen Gameobjects
+            Transform hitObjectTransform = hitInfo.collider.transform;
+
+            // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
+            Vector3 direction = hitObjectTransform.position - bullet.transform.position;
+
+            // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
+            bullet.AddForce(0.05f * shotStrength * direction.normalized, ForceMode.Impulse);
+
+            // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
+            bullet.transform.LookAt(hitObjectTransform.position);
+        }
+        else
+        {
+            // Wenn der Raycast kein Ziel trifft, fahren Sie das Bullet geradeaus fort
+            //bullet.AddForce(transform.forward * shotStrength, ForceMode.Impulse);
+            Destroy(bullet.gameObject, 0f);
+        }
+        */
     }
 
 }

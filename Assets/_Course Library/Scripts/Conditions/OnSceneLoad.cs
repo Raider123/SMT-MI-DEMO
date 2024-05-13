@@ -29,17 +29,6 @@ public class OnSceneLoad : MonoBehaviour
         // Eine kurze Verzögerung, um sicherzustellen, dass alle Objekte initialisiert sind
         objectsToReplace = new GameObject[9];
         replacementObjects = new GameObject[2];
-
-        // Here we specifiy changes of higher levels in relation to lower levels (for example, adjusting the scale of the targets in level 2)
-        int level = PlayerPrefs.GetInt("Level");
-        if (level == 2)
-        {
-            // Change the scaling of the target objects to 1.25
-            for (int i = 0; i < objectsToReplace.Length; i++)
-            {
-                objectsToReplace[i].transform.localScale = Vector3.one * 1.25f;
-            }
-        }
     }
 
     private void Update()
@@ -72,12 +61,25 @@ public class OnSceneLoad : MonoBehaviour
         // Deaktiviere das Ursprungsobjekt, mit dem ersetzt wurde
         selectedReplacementObject.SetActive(false);
 
+        // Here we specifiy changes of higher levels in relation to lower levels (for example, adjusting the scale of the targets in level 2)
+        int level = PlayerPrefs.GetInt("Level");
+        if (level == 2)
+        {
+            // Decrease the target size in the appropriate level
+            new_target.transform.localScale = Vector3.one * 1.25f;
+        }else if (level == 3)
+        {
+            new_target.GetComponent<MoveOnSquarePath>().enabled = true;
+        }
+
         // Grow all the targets over time
         StartCoroutine(GrowOverTime(new_target));
+        /* We have disabled the visual of the game objects, thus we can save some processing power
         for (int i = 0; i < objectsToReplace.Length; i++)
         {
             StartCoroutine(GrowOverTime(objectsToReplace[i]));
         }
+        */
 
         // Zeige das Textmeshpro Objekt in der Farbe der Zielscheibe an
         if (new_target.tag == "left_hand_mi")
@@ -99,7 +101,7 @@ public class OnSceneLoad : MonoBehaviour
         // Startskalierung des Objekts
         Vector3 startScale = Vector3.zero; 
 
-        // Ziel-Skalierung des Objekts (z. B. unsichtbar klein)
+        // Ziel-Skalierung des Objekts 
         Vector3 targetScale = selfreference.transform.localScale; 
 
         // Zeit, die seit Beginn der Animation vergangen ist

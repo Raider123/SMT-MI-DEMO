@@ -9,6 +9,7 @@ public class update_total_score : MonoBehaviour
     void Start()
     {
         float actual_score = PlayerPrefs.GetFloat("achievement_score");
-        score_text.text = "Punktzahl: " + actual_score.ToString();
+        int level = PlayerPrefs.GetInt("Level");
+        score_text.text = "Level " + level + " beendet" + "\nPunktzahl: " + actual_score.ToString();
     }
 }

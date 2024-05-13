@@ -8,6 +8,7 @@ public class OnLevelManagerStart : MonoBehaviour
     [SerializeField] private GameObject level0;
     [SerializeField] private GameObject level1;
     [SerializeField] private GameObject level2;
+    [SerializeField] private GameObject level3;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,10 +24,14 @@ public class OnLevelManagerStart : MonoBehaviour
         {
             // Level 1: Trial 
             level1.SetActive(true);
-        }else
+        }else if (level == 2)
         {
             // Level 2: Small Targets (differences to Level 1)
             level2.SetActive(true);
+        }
+        else
+        {
+            level3.SetActive(true);
         }
     }
 

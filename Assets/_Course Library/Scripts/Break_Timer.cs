@@ -36,7 +36,7 @@ public class Break_Timer : MonoBehaviour
             if (remainingTime <= 0)
             {
                 // Realisierung des Szenenwechsels
-                if (actual_trial_num == max_num_of_trials)
+                if (actual_trial_num == max_num_of_trials - 1)
                 {
                     // Reset the actual trial num for the next playthrough
                     actual_trial_num = 0;
