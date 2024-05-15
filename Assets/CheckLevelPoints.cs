@@ -17,8 +17,8 @@ public class CheckLevelPoints : MonoBehaviour
 
     [SerializeField] private TMP_Text locked_button_text; // Show the locked button with the required points
 
-    [SerializeField] private int min_points_lvl2 = 10;
-    [SerializeField] private int min_points_lvl3 = 40;
+    [SerializeField] private int min_points_lvl2 = 60;
+    [SerializeField] private int min_points_lvl3 = 120;
 
     // Compares the reached points with the required points for the next level
     void Awake()

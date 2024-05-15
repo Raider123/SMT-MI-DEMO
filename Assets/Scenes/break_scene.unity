@@ -21095,7 +21095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownTime: 2
   timeText: {fileID: 2034791942}
-  max_num_of_trials: 3
+  max_num_of_trials: 8
   trial_scene_index: 1
   end_scene_index: 3
 --- !u!1001 &2045779967

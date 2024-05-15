@@ -85,13 +85,13 @@ public class OnSceneLoad : MonoBehaviour
         if (new_target.tag == "left_hand_mi")
         {
             ammo_text.color = Color.blue;
-            right_hand_gesture_detection.SetActive(false);
+            right_hand_gesture_detection.SetActive(false); // the correct gesture starts the countdown timer
             
 
         }else if(new_target.tag == "right_hand_mi")
         {
             ammo_text.color = Color.green;
-            left_hand_gesture_detection.SetActive(false);
+            left_hand_gesture_detection.SetActive(false); // the correct gesture starts the countdown timer
 
         }
     }

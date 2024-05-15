@@ -2798,6 +2798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
         type: 3}
+      propertyPath: left_target
+      value: 
+      objectReference: {fileID: 1842305443}
+    - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
+        type: 3}
       propertyPath: maxDistance
       value: 20
       objectReference: {fileID: 0}
@@ -2811,6 +2816,11 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 228724407}
+    - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
+        type: 3}
+      propertyPath: right_target
+      value: 
+      objectReference: {fileID: 2091486066}
     - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
         type: 3}
       propertyPath: shotStrength
@@ -2845,6 +2855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spawner Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907909469588131, guid: a2a18ce933ea11f44b7c0145384c209f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10971,6 +10986,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
+      propertyPath: left_target
+      value: 
+      objectReference: {fileID: 1842305443}
+    - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
+        type: 3}
       propertyPath: maxDistance
       value: 20
       objectReference: {fileID: 0}
@@ -10984,6 +11004,11 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 1299912463}
+    - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
+        type: 3}
+      propertyPath: right_target
+      value: 
+      objectReference: {fileID: 2091486066}
     - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
       propertyPath: shotStrength
@@ -11018,6 +11043,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spawner Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018837500388290232, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7326553031491321603, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
@@ -13352,7 +13382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f7776535c773b4eb9e21753932da33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 3
+  countdownTime: 4
   timeText: {fileID: 1195796076}
   next_scene_index: 2
 --- !u!1001 &1199017615
@@ -16068,10 +16098,10 @@ MonoBehaviour:
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1195796081}
+        m_TargetAssemblyTypeName: Start_Trial_Timer, Assembly-CSharp
+        m_MethodName: StartCountdown
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26369,6 +26399,8 @@ MonoBehaviour:
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}
   Point_display: {fileID: 195132364}
+  left_spawner: {fileID: 598432518}
+  right_spawner: {fileID: 1923991814}
 --- !u!82 &1842305440
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32817,10 +32849,10 @@ MonoBehaviour:
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1195796081}
+        m_TargetAssemblyTypeName: Start_Trial_Timer, Assembly-CSharp
+        m_MethodName: StartCountdown
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -34415,6 +34447,8 @@ MonoBehaviour:
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}
   Point_display: {fileID: 195132364}
+  left_spawner: {fileID: 598432518}
+  right_spawner: {fileID: 1923991814}
 --- !u!82 &2091486063
 AudioSource:
   m_ObjectHideFlags: 0

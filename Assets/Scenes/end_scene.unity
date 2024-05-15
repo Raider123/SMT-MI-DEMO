@@ -21014,7 +21014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7691e4e5717c9fd4ca0fb85b983c7459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 1
+  countdownTime: 2
   timeText: {fileID: 2034791942}
   next_sceneIndex: 1
 --- !u!82 &2034791944

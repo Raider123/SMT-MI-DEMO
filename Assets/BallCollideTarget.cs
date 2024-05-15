@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Runtime.ConstrainedExecution;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -26,8 +28,11 @@ public class BallCollideTarget : MonoBehaviour
 
     [SerializeField] private GameObject Point_display; // Nach dem erfolgreichen Abschuss einer Zielscheibe direkt die Punktzahl anzeigen
 
-    static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
+    [SerializeField] private GameObject left_spawner; // Das Gameobjekt zum Starten der Bullets für die linke Hand
 
+    [SerializeField] private GameObject right_spawner; // Das Gameobjekt zum Starten der Bullets für die rechte Hand
+
+    static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -77,7 +82,7 @@ public class BallCollideTarget : MonoBehaviour
             }
            
             // Starte den Countdown Timer zum Laden der nächsten Szene
-            countDown.GetComponent<Start_Trial_Timer>().StartCountdown();
+            //countDown.GetComponent<Start_Trial_Timer>().StartCountdown();
 
             // Destroy the object, if needed
             Destroy(collision.gameObject);
