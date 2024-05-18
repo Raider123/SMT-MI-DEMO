@@ -34,6 +34,18 @@ public class BallCollideTarget : MonoBehaviour
 
     static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
+    private void Update()
+    {
+        if (eye_gaze_interactable.isHovered)
+        {
+            gesture_detection.SetActive(true);
+        }
+        else
+        {
+            gesture_detection.SetActive(false);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         // Compare the tag of both collision partners
@@ -44,7 +56,7 @@ public class BallCollideTarget : MonoBehaviour
             gesture_detection.gameObject.SetActive(false);
 
             // Kalkuliere die Punktzahl basierend auf der Entfernung vom Mittelpunkt (x-Koordinate)
-            float game_points = calculatePoints(selfreference, collision.gameObject);
+            float game_points = CalculatePoints(selfreference, collision.gameObject);
 
             // Erhöhe den erreichten Punktestand
             achievement_score += game_points;
@@ -144,7 +156,7 @@ public class BallCollideTarget : MonoBehaviour
         selfreference.transform.localScale = targetScale;
     }
 
-    private float calculatePoints(GameObject object1, GameObject object2)
+    private float CalculatePoints(GameObject object1, GameObject object2)
     {
         Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
         float radius = colliderSize.y * 0.5f; // Found through an empirical process
