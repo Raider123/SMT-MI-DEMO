@@ -18,9 +18,6 @@ public class BulletShooter : MonoBehaviour
     [Tooltip("Maximale Entfernung für den Raycast")]
     [SerializeField] private float maxDistance = 10f; 
 
-    [Tooltip("Eine Instanz des Targetchooser Skripts zum Erhöhen der Munition etc.")]
-    [SerializeField] private OnSceneLoad tchooser_script;
-
     [Tooltip("Die Audiosource, die beim Abschuss gespielt wird")]
     [SerializeField] private AudioSource shoot_audio_1;
 
@@ -70,9 +67,6 @@ public class BulletShooter : MonoBehaviour
                 {
                     shoot_audio_2.Play();
                 }
-
-                // Erhöhe die Anzahl der verschossenen Munition extern
-                tchooser_script.ammo += 1;
 
                 // Zerstören Sie das Bullet nach einer bestimmten Zeit
                 Destroy(bullet.gameObject, 1.5f);

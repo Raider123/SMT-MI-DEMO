@@ -13,16 +13,11 @@ public class OnSceneLoad : MonoBehaviour
     [SerializeField] private GameObject[] replacementObjects; // Das Objekt, das ein vorhandenes ersetzen soll
 
     [SerializeField] private float grow_duration = 1.0f; // Animationsdauer zum Wachsen
-    [SerializeField] private float shrink_duration = 1.0f; // Schrumpfen - Animationsdauer
-
-    [SerializeField] private TextMeshPro ammo_text; // Zum Anzeigen der verschossenen (später noch übrigen Munition)
 
     [SerializeField] private GameObject left_hand_gesture_detection; // Gestikfunktion der linken Hand
     [SerializeField] private GameObject right_hand_gesture_detection; // Gestikfunktion der rechten Hand
 
     [SerializeField] private GameObject XR_Rig; // Kameraposition des Kopfes
-
-    public int ammo; // Munitionszahlwert
 
     private GameObject new_target; // The final target that is created at the exchanged position 
 
@@ -33,9 +28,9 @@ public class OnSceneLoad : MonoBehaviour
         replacementObjects = new GameObject[2];
     }
 
-    private void Update()
+    public GameObject getActualTarget()
     {
-        ammo_text.text = ammo.ToString();
+        return new_target;
     }
 
     public void Awake()
@@ -89,13 +84,10 @@ public class OnSceneLoad : MonoBehaviour
         // Zeige das Textmeshpro Objekt in der Farbe der Zielscheibe an
         if (new_target.tag == "left_hand_mi")
         {
-            ammo_text.color = Color.blue;
             right_hand_gesture_detection.SetActive(false); // the correct gesture starts the countdown timer
-            
-
+           
         }else if(new_target.tag == "right_hand_mi")
         {
-            ammo_text.color = Color.green;
             left_hand_gesture_detection.SetActive(false); // the correct gesture starts the countdown timer
 
         }

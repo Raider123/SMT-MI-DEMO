@@ -27,7 +27,7 @@ public class TransformRecorder : MonoBehaviour
         Quaternion rotation = handobject.transform.rotation;
 
         // Format the data as a string
-        string line = $"{position.x},{position.y},{position.z},{rotation.x},{rotation.y},{rotation.z},{rotation.w}";
+        string line = $"{position.x};{position.y};{position.z};{rotation.x};{rotation.y};{rotation.z};{rotation.w}";
         data.AppendLine(line);
     }
 
