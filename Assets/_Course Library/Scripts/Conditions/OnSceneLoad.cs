@@ -20,6 +20,8 @@ public class OnSceneLoad : MonoBehaviour
     [SerializeField] private GameObject left_hand_gesture_detection; // Gestikfunktion der linken Hand
     [SerializeField] private GameObject right_hand_gesture_detection; // Gestikfunktion der rechten Hand
 
+    [SerializeField] private GameObject XR_Rig; // Kameraposition des Kopfes
+
     public int ammo; // Munitionszahlwert
 
     private GameObject new_target; // The final target that is created at the exchanged position 
@@ -66,7 +68,10 @@ public class OnSceneLoad : MonoBehaviour
         if (level == 2)
         {
             // Decrease the target size in the appropriate level
-            new_target.transform.localScale = Vector3.one * 1.25f;
+            //new_target.transform.localScale = Vector3.one * 1.25f;
+            // Increase the distance to the objects by moving the XR Rig further back
+            XR_Rig.transform.localPosition = new Vector3(2f, 0f , 0.176f);
+
         }else if (level == 3)
         {
             new_target.GetComponent<MoveOnSquarePath>().enabled = true;
