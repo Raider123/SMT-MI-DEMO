@@ -27,6 +27,9 @@ public class BulletShooter : MonoBehaviour
     [Tooltip("Transform that holds the bullets until they are destroyed.")]
     private Transform bulletHolder;
 
+    [Tooltip("Reference to the targetchooser-Object to retrieve the new_target position.")]
+    [SerializeField] private GameObject target_chooser;
+
     private Rigidbody bullet;
 
     private Transform hitObjectTransform;
@@ -39,8 +42,6 @@ public class BulletShooter : MonoBehaviour
             {
                 // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
                 bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
-                //bullet.AddForce(transform.forward * shotStrength, ForceMode.Impulse);
-
 
                 // Erhalten Sie die Transform des getroffenen Gameobjects
                 hitObjectTransform = hitInfo.collider.transform;
@@ -71,11 +72,46 @@ public class BulletShooter : MonoBehaviour
                 // Zerstören Sie das Bullet nach einer bestimmten Zeit
                 Destroy(bullet.gameObject, 1.5f);
             }
-            
+    }
+
+    public void Mi_shoot()
+    {
+        // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
+        bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
+
+        // Erhalten Sie die Transform des getroffenen Gameobjects
+        GameObject actual_target = target_chooser.GetComponent<OnSceneLoad>().getActualTarget();
+        hitObjectTransform = actual_target.transform;
+
+        // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
+        Vector3 direction = hitObjectTransform.position - bullet.transform.position;
+
+        // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
+        bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
+
+        // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
+        bullet.transform.LookAt(hitObjectTransform.position);
+
+
+        // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
+        float randomValue = Random.value;
+
+        // Überprüfe, ob die Zufallszahl kleiner als 0.5 ist
+        if (randomValue < 0.5f)
+        {
+            shoot_audio_1.Play();
+        }
+        else
+        {
+            shoot_audio_2.Play();
+        }
+
+        // Zerstören Sie das Bullet nach einer bestimmten Zeit
+        Destroy(bullet.gameObject, 1.5f);
     }
 
     private void Update()
-    {
+    {      
         // If we activate this method, we guide the bullet straight into the goal
         // Führen Sie den Raycast vom raycastObject aus
         if(bullet != null)
@@ -89,5 +125,6 @@ public class BulletShooter : MonoBehaviour
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
             bullet.transform.LookAt(hitObjectTransform.position);
         }      
+        
     }
 }

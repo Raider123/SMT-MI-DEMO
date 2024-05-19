@@ -340,7 +340,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1597903158}
+    m_TransformParent: {fileID: 1232774689}
     m_Modifications:
     - target: {fileID: 1572693335497562563, guid: a2a18ce933ea11f44b7c0145384c209f,
         type: 3}
@@ -452,6 +452,11 @@ PrefabInstance:
       propertyPath: shoot_audio_2
       value: 
       objectReference: {fileID: 5655194}
+    - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
+        type: 3}
+      propertyPath: target_chooser
+      value: 
+      objectReference: {fileID: 1788084836}
     - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
         type: 3}
       propertyPath: tchooser_script
@@ -3351,6 +3356,11 @@ PrefabInstance:
       propertyPath: shoot_audio_2
       value: 
       objectReference: {fileID: 598432521}
+    - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
+        type: 3}
+      propertyPath: target_chooser
+      value: 
+      objectReference: {fileID: 1788084836}
     - target: {fileID: 3425920533415279250, guid: a2a18ce933ea11f44b7c0145384c209f,
         type: 3}
       propertyPath: tchooser_script
@@ -11819,6 +11829,11 @@ PrefabInstance:
       objectReference: {fileID: 1923991817}
     - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
+      propertyPath: target_chooser
+      value: 
+      objectReference: {fileID: 1788084836}
+    - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
+        type: 3}
       propertyPath: tchooser_script
       value: 
       objectReference: {fileID: 1788084839}
@@ -12386,6 +12401,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4385080170327957909, guid: ff62b58c5a9ea164fa8ddf8038e10cd1,
     type: 3}
   m_PrefabInstance: {fileID: 933204530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &941914666 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2360726808986903579, guid: 89e80c47615e4f043926d66492d3ca5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1608516679}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &942737756
 GameObject:
@@ -14824,6 +14845,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1231189491}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1232774689 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9040749149295426473, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85,
+    type: 3}
+  m_PrefabInstance: {fileID: 1597903152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1238881689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fb479a82031a84340a4271a174b79ab2,
@@ -15742,10 +15769,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6034a512caa5bfa47bf4a7074f2f4458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrist: {fileID: 1248894054}
-  fileName: Left_Hand.txt
   spawner_obj: {fileID: 0}
   start_countdown: {fileID: 0}
+  wrist: {fileID: 1248894054}
+  fileName: Left_Hand.txt
 --- !u!114 &1248894063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15758,10 +15785,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6034a512caa5bfa47bf4a7074f2f4458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrist: {fileID: 1248894055}
-  fileName: Right_Hand.txt
   spawner_obj: {fileID: 0}
   start_countdown: {fileID: 0}
+  wrist: {fileID: 1248894055}
+  fileName: Right_Hand.txt
 --- !u!1001 &1278292125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24721,9 +24748,9 @@ PrefabInstance:
     - {fileID: 4117179676178661335, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85, type: 3}
     - {fileID: 1493371769922722510, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5069669653287105868, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85,
+    - targetCorrespondingSourceObject: {fileID: 9040749149295426473, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85,
         type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 5655192}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7708168453040589995, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85,
@@ -24755,19 +24782,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6034a512caa5bfa47bf4a7074f2f4458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrist: {fileID: 1597903155}
-  fileName: Left_Hand.txt
   spawner_obj: {fileID: 5655193}
   start_countdown: {fileID: 1195796074}
+  wrist: {fileID: 1597903155}
+  fileName: Left_Hand.txt
 --- !u!1 &1597903157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2119128821997336139, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85,
-    type: 3}
-  m_PrefabInstance: {fileID: 1597903152}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1597903158 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5069669653287105868, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85,
     type: 3}
   m_PrefabInstance: {fileID: 1597903152}
   m_PrefabAsset: {fileID: 0}
@@ -25136,9 +25157,9 @@ PrefabInstance:
     - {fileID: 7565144130350447155, guid: 89e80c47615e4f043926d66492d3ca5f, type: 3}
     - {fileID: 1139509643922615341, guid: 89e80c47615e4f043926d66492d3ca5f, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3395978642719627775, guid: 89e80c47615e4f043926d66492d3ca5f,
+    - targetCorrespondingSourceObject: {fileID: 2360726808986903579, guid: 89e80c47615e4f043926d66492d3ca5f,
         type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 1722563874}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 842518933317442901, guid: 89e80c47615e4f043926d66492d3ca5f,
@@ -25170,19 +25191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6034a512caa5bfa47bf4a7074f2f4458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrist: {fileID: 1608516682}
-  fileName: Right_Hand.txt
   spawner_obj: {fileID: 1722563875}
   start_countdown: {fileID: 1195796074}
+  wrist: {fileID: 1608516682}
+  fileName: Right_Hand.txt
 --- !u!1 &1608516684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2746493918707896725, guid: 89e80c47615e4f043926d66492d3ca5f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1608516679}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1608516685 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3395978642719627775, guid: 89e80c47615e4f043926d66492d3ca5f,
     type: 3}
   m_PrefabInstance: {fileID: 1608516679}
   m_PrefabAsset: {fileID: 0}
@@ -26900,7 +26915,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1608516685}
+    m_TransformParent: {fileID: 941914666}
     m_Modifications:
     - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
@@ -26947,6 +26962,11 @@ PrefabInstance:
       propertyPath: shoot_audio_2
       value: 
       objectReference: {fileID: 1722563876}
+    - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
+        type: 3}
+      propertyPath: target_chooser
+      value: 
+      objectReference: {fileID: 1788084836}
     - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
       propertyPath: tchooser_script
