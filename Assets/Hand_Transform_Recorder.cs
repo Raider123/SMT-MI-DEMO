@@ -40,7 +40,7 @@ public class Hand_Transform_Recorder : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         // Write the recorded data to the file when the application quits
         string file1 = Path.Combine(folderName, "NEW " + handobject.name + $"{System.DateTime.Now:yyyyMMdd_HHmmss}.txt");
