@@ -19,6 +19,8 @@ public class OnSceneLoad : MonoBehaviour
 
     [SerializeField] private GameObject XR_Rig; // Kameraposition des Kopfes
 
+    [SerializeField] private GameObject L_Wrist, R_Wrist;
+
     private GameObject new_target; // The final target that is created at the exchanged position 
 
     public void Start()
@@ -89,7 +91,6 @@ public class OnSceneLoad : MonoBehaviour
         }else if(new_target.tag == "right_hand_mi")
         {
             left_hand_gesture_detection.SetActive(false); // the correct gesture starts the countdown timer
-
         }
     }
 
