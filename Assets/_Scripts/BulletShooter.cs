@@ -34,7 +34,7 @@ public class BulletShooter : MonoBehaviour
 
     private Transform hitObjectTransform;
 
-    // Public Method to shoot Bullet prefab when called.
+    // Diese Methode bildet im Normalfall eine realistischere Bewegung der Geschosse zum Ziel, da sie mit der Position des Gaze Interactors zusammenfallen
     public void ShootBullet()
     {
         // Führen Sie den Raycast vom raycastObject aus 
@@ -74,14 +74,17 @@ public class BulletShooter : MonoBehaviour
             }
     }
 
-    public void Mi_shoot()
+    // Im MI-Fall garantieren wir immer das Treffen des Ziels. Hier werden wir extern beeinflussen, ob wir die Mitte, Dazwischen oder den äußeren Rand treffen (d.h. der Schuss wird mit dem mitgelieferten Argument vorprogrammiert)
+    public void Mi_shoot(float decision_value)
     {
         // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
         bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
 
         // Erhalten Sie die Transform des getroffenen Gameobjects
         GameObject actual_target = target_chooser.GetComponent<OnSceneLoad>().getActualTarget();
-        hitObjectTransform = actual_target.transform;
+
+        //hitObjectTransform = actual_target.transform;
+        hitObjectTransform = DetermineCoordinates(actual_target, decision_value);
 
         // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
         Vector3 direction = hitObjectTransform.position - bullet.transform.position;
@@ -108,6 +111,25 @@ public class BulletShooter : MonoBehaviour
 
         // Zerstören Sie das Bullet nach einer bestimmten Zeit
         Destroy(bullet.gameObject, 1.5f);
+    }
+
+    public Transform DetermineCoordinates(GameObject object2, float targetAccuracy)
+    {
+        // Get the collider size and radius of object1
+        Vector3 colliderSize = object2.transform.position;
+        float radius = colliderSize.y * 0.5f; // Radius is 0.25 in the normal condition
+
+        // Determine the desired distance based on the target accuracy
+        float desiredDistance = radius * (targetAccuracy / 100.0f);
+
+        // Calculate the actual distance needed (using the radius and target accuracy)
+        float yDistance = desiredDistance * 0.5f;
+        float zDistance = desiredDistance * 0.5f;
+
+
+        object2.transform.position = new Vector3(0, object2.transform.position.y + yDistance, object2.transform.position.z + zDistance);
+
+        return object2.transform;
     }
 
     private void Update()

@@ -116,7 +116,10 @@ public class Hand_Transform_Player : MonoBehaviour
             yield return null;
         }
 
-        spawner_obj.GetComponent<BulletShooter>().Mi_shoot();
+        float classification = Random.value * 100;
+        Debug.Log("Classification: " + classification);
+
+        spawner_obj.GetComponent<BulletShooter>().Mi_shoot(classification);
         start_countdown.GetComponent<Start_Trial_Timer>().StartCountdown();
     }
 

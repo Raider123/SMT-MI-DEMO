@@ -32,6 +32,8 @@ public class BallCollideTarget : MonoBehaviour
 
     private void Update()
     {
+        // New Game Mechanic: The shooting gesture will only be detected, once the eye gaze to the goal has been established
+        // After that, the bullet will be able to travel to the goal without any hinderances
         if (eye_gaze_interactable.isHovered)
         {
             gesture_detection.SetActive(true);
@@ -45,8 +47,9 @@ public class BallCollideTarget : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Compare the tag of both collision partners
-        // If the tag is left_hand_mi, an event is only triggered if both collision objects share the same tag and there is a "Hovered" Event
-        if ((selfreference.tag == collision.gameObject.tag) && eye_gaze_interactable.isHovered)
+        // If the tag is left_hand_mi, an event is only triggered if both collision objects share the same tag
+        // In previous versions we also required eye gaze to be active (eye_gaze_interactable.isHovered), but as the collision itself is only part of the reward/break and not MI, we can neglect it
+        if (selfreference.tag == collision.gameObject.tag)
         {
             // Deaktiviere weitere Schussmöglichkeiten
             gesture_detection.gameObject.SetActive(false);
@@ -155,7 +158,7 @@ public class BallCollideTarget : MonoBehaviour
     private float CalculatePoints(GameObject object1, GameObject object2)
     {
         Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
-        float radius = colliderSize.y * 0.5f; // Found through an empirical process
+        float radius = colliderSize.y * 0.5f; // Found through an empirical process (radius is 0.25 in the normal condition/level 1)
 
         // Berechne den y-Abstand
         float yDistance = Mathf.Abs(object1.transform.position.y - object2.transform.position.y);
