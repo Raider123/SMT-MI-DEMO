@@ -155,6 +155,7 @@ public class BallCollideTarget : MonoBehaviour
         selfreference.transform.localScale = targetScale;
     }
 
+    /*
     private float CalculatePoints(GameObject object1, GameObject object2)
     {
         Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
@@ -186,6 +187,52 @@ public class BallCollideTarget : MonoBehaviour
         }else 
         {
             return 10f;
+        }
+    }
+    */
+
+    private float CalculatePoints(GameObject object1, GameObject object2)
+    {
+        Debug.Log("Colliding Position: " + object2.transform.position);
+
+        // Berechne die Größe des Colliders
+        Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
+
+        // Berechne den Radius
+        float radius = colliderSize.y * 0.5f; // Radius ist 0.25 im normalen Zustand/Level 1
+
+        // Berechne den y-Abstand
+        float yDistance = Mathf.Abs(object1.transform.position.y - object2.transform.position.y);
+
+        // Berechne den z-Abstand
+        float zDistance = Mathf.Abs(object1.transform.position.z - object2.transform.position.z);
+
+        // Berechne die Distanz zwischen den Punkten
+        float distance = Mathf.Sqrt(Mathf.Pow(yDistance, 2) + Mathf.Pow(zDistance, 2));
+
+
+        // Berechne die Genauigkeit basierend auf der Entfernung zum Radius
+        float accuracy = Mathf.Abs((radius - distance) / radius) * 100;
+
+        // Runde die Genauigkeit auf zwei Dezimalstellen
+        float roundedAccuracy = Mathf.Round(accuracy * 100f) / 100f;
+
+        // Punktevergabe basierend auf der Genauigkeit
+        if (roundedAccuracy >= 90)
+        {
+            return 10f;
+        }
+        else if (roundedAccuracy >= 80)
+        {
+            return 8f;
+        }
+        else if (roundedAccuracy >= 70)
+        {
+            return 6f;
+        }
+        else
+        {
+            return 4f;
         }
     }
 }

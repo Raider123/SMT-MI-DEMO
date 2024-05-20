@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using static UnityEngine.InputSystem.Controls.AxisControl;
 
 public class BulletShooter : MonoBehaviour
 {
@@ -83,14 +84,13 @@ public class BulletShooter : MonoBehaviour
         // Erhalten Sie die Transform des getroffenen Gameobjects
         GameObject actual_target = target_chooser.GetComponent<OnSceneLoad>().getActualTarget();
 
-        //hitObjectTransform = actual_target.transform;
         hitObjectTransform = DetermineCoordinates(actual_target, decision_value);
 
         // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
         Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
         // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-        bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
+        bullet.AddForce(0.25f * shotStrength * direction.normalized, ForceMode.Impulse);
 
         // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
         bullet.transform.LookAt(hitObjectTransform.position);
@@ -113,23 +113,28 @@ public class BulletShooter : MonoBehaviour
         Destroy(bullet.gameObject, 1.5f);
     }
 
-    public Transform DetermineCoordinates(GameObject object2, float targetAccuracy)
+    public static Transform DetermineCoordinates(GameObject original, float accuracy)
     {
-        // Get the collider size and radius of object1
-        Vector3 colliderSize = object2.transform.position;
-        float radius = colliderSize.y * 0.5f; // Radius is 0.25 in the normal condition
 
-        // Determine the desired distance based on the target accuracy
-        float desiredDistance = radius * (targetAccuracy / 100.0f);
+        // Calculate the offset based on the accuracy
+        float maxOffset = 0.25f;
+        float offset = maxOffset * (1.0f - (accuracy / 100.0f));
 
-        // Calculate the actual distance needed (using the radius and target accuracy)
-        float yDistance = desiredDistance * 0.5f;
-        float zDistance = desiredDistance * 0.5f;
+        // Create a new GameObject to hold the new Transform
+        GameObject tempGameObject = new GameObject("TempGameObject");
+        Transform newTransform = tempGameObject.transform;
 
+        // Copy the original position, rotation, and scale
+        newTransform.position = original.transform.position;
+        newTransform.rotation = original.transform.rotation;
+        newTransform.localScale = original.transform.localScale;
 
-        object2.transform.position = new Vector3(0, object2.transform.position.y + yDistance, object2.transform.position.z + zDistance);
+        // Modify the y and z coordinates
+        newTransform.position += new Vector3(0, 0, offset);
 
-        return object2.transform;
+        Debug.Log("NewPos : " + newTransform.position);
+
+        return newTransform;
     }
 
     private void Update()
@@ -142,7 +147,8 @@ public class BulletShooter : MonoBehaviour
             Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-            bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.Impulse);
+            //bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.Impulse);
+            bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.VelocityChange);
 
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
             bullet.transform.LookAt(hitObjectTransform.position);
