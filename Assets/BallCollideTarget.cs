@@ -193,8 +193,6 @@ public class BallCollideTarget : MonoBehaviour
 
     private float CalculatePoints(GameObject object1, GameObject object2)
     {
-        Debug.Log("Colliding Position: " + object2.transform.position);
-
         // Berechne die Größe des Colliders
         Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
 
@@ -216,6 +214,8 @@ public class BallCollideTarget : MonoBehaviour
 
         // Runde die Genauigkeit auf zwei Dezimalstellen
         float roundedAccuracy = Mathf.Round(accuracy * 100f) / 100f;
+
+        Debug.Log("Rounded Accuracy: " + roundedAccuracy);
 
         // Punktevergabe basierend auf der Genauigkeit
         if (roundedAccuracy >= 90)

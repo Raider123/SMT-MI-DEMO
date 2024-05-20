@@ -78,23 +78,18 @@ public class BulletShooter : MonoBehaviour
     // Im MI-Fall garantieren wir immer das Treffen des Ziels. Hier werden wir extern beeinflussen, ob wir die Mitte, Dazwischen oder den äußeren Rand treffen (d.h. der Schuss wird mit dem mitgelieferten Argument vorprogrammiert)
     public void Mi_shoot(float decision_value)
     {
+        // For MI objects we don't need gravity
+        bulletPrefab.GetComponent<Rigidbody>().useGravity = false;
+
         // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
         bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
 
         // Erhalten Sie die Transform des getroffenen Gameobjects
         GameObject actual_target = target_chooser.GetComponent<OnSceneLoad>().getActualTarget();
-
         hitObjectTransform = DetermineCoordinates(actual_target, decision_value);
-
-        // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
-        Vector3 direction = hitObjectTransform.position - bullet.transform.position;
-
-        // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-        bullet.AddForce(0.25f * shotStrength * direction.normalized, ForceMode.Impulse);
 
         // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
         bullet.transform.LookAt(hitObjectTransform.position);
-
 
         // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
         float randomValue = Random.value;
@@ -132,8 +127,6 @@ public class BulletShooter : MonoBehaviour
         // Modify the y and z coordinates
         newTransform.position += new Vector3(0, 0, offset);
 
-        Debug.Log("NewPos : " + newTransform.position);
-
         return newTransform;
     }
 
@@ -148,7 +141,7 @@ public class BulletShooter : MonoBehaviour
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
             //bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.Impulse);
-            bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+            bullet.AddForce(0.1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
 
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
             bullet.transform.LookAt(hitObjectTransform.position);
