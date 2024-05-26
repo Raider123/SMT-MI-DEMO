@@ -142,7 +142,7 @@ public class BulletShooter : MonoBehaviour
         // If we activate this method, we guide the bullet straight into the goal
         // Führen Sie den Raycast vom raycastObject aus
         if(bullet != null)
-        {
+        {       
             // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
             Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 

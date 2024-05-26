@@ -22,8 +22,6 @@ public class BallCollideTarget : MonoBehaviour
 
     [SerializeField] private XRSimpleInteractable eye_gaze_interactable; // Instanz des Eye Gaze Interactable Objekts, um die Blickrichtung zu erfassen
 
-    [SerializeField] private GameObject countDown; // Instanz eines Timerskripts zum Ansprechen der StartCountdown() Funktion nach erfolgter Kollision
-
     [SerializeField] private GameObject gesture_detection; // Instanz eines Gesture-Detection Objekts, um die Schussmöglichkeiten nach der Kollision einzuschränken
 
     [SerializeField] private GameObject Point_display; // Nach dem erfolgreichen Abschuss einer Zielscheibe direkt die Punktzahl anzeigen
@@ -91,9 +89,10 @@ public class BallCollideTarget : MonoBehaviour
             {
                 StartCoroutine(ShrinkOverTime(objectsToReplace[i]));
             }
-           
-            // Starte den Countdown Timer zum Laden der nächsten Szene
-            //countDown.GetComponent<Start_Trial_Timer>().StartCountdown();
+
+            Vector3 collisionPosition = collision.contacts[0].point;
+            // Instantiate the clone of object A at the collision position
+            Instantiate(collision.gameObject, collisionPosition, Quaternion.identity);
 
             // Destroy the object, if needed
             Destroy(collision.gameObject);
