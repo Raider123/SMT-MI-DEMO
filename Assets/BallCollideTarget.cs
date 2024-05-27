@@ -28,6 +28,8 @@ public class BallCollideTarget : MonoBehaviour
 
     [SerializeField] private GameObject Point_display; // Nach dem erfolgreichen Abschuss einer Zielscheibe direkt die Punktzahl anzeigen
 
+    [SerializeField] private GameObject bullet_mark_material; // Farbe des abgeschossenen Kreuzes
+
     static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
     private void Update()
@@ -86,17 +88,18 @@ public class BallCollideTarget : MonoBehaviour
             new_point_display.GetComponent<TextMeshPro>().text = game_points.ToString();
             StartCoroutine(GrowOverTime(new_point_display));
 
-            //Shrinking all the objects upon collision
-            for (int i = 0; i < objectsToReplace.Length; i++)
-            {
-                StartCoroutine(ShrinkOverTime(objectsToReplace[i]));
-            }
-           
-            // Starte den Countdown Timer zum Laden der nächsten Szene
-            //countDown.GetComponent<Start_Trial_Timer>().StartCountdown();
+            // Deactivate target collision (avoid multiple collisions at once)
+            selfreference.GetComponent<MeshCollider>().enabled = false;
+            // Stop the Bullet and set its position to the collision point
+            Rigidbody bulletRigidbody = collision.rigidbody;        
+            bulletRigidbody.velocity = Vector3.zero;
+            bulletRigidbody.angularVelocity = Vector3.zero;
+            bulletRigidbody.isKinematic = true; // Deaktiviert die Physikberechnungen   
+            collision.gameObject.transform.position = collision.contacts[0].point;
+            collision.gameObject.transform.GetComponent<MeshRenderer>().material = bullet_mark_material.GetComponent<MeshRenderer>().material;
 
-            // Destroy the object, if needed
-            Destroy(collision.gameObject);
+            // Destroy the original gameObject
+            //Destroy(collision.gameObject);
         }
     }
 
