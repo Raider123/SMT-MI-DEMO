@@ -35,6 +35,8 @@ public class BulletShooter : MonoBehaviour
 
     private Transform hitObjectTransform;
 
+    private bool mi_case;
+
     // Diese Methode bildet im Normalfall eine realistischere Bewegung der Geschosse zum Ziel, da sie mit der Position des Gaze Interactors zusammenfallen
     public void ShootBullet()
     {
@@ -73,6 +75,8 @@ public class BulletShooter : MonoBehaviour
                 // Zerstören Sie das Bullet nach einer bestimmten Zeit
                 Destroy(bullet.gameObject, 3f);
             }
+
+        mi_case = false;
     }
 
     // Im MI-Fall garantieren wir immer das Treffen des Ziels. Hier werden wir extern beeinflussen, ob wir die Mitte, Dazwischen oder den äußeren Rand treffen (d.h. der Schuss wird mit dem mitgelieferten Argument vorprogrammiert)
@@ -112,6 +116,8 @@ public class BulletShooter : MonoBehaviour
             shoot_audio_2.Play();
         }
 
+        mi_case = true;
+
         // Zerstören Sie das Bullet nach einer bestimmten Zeit
         Destroy(bullet.gameObject, 3f);
     }
@@ -148,8 +154,14 @@ public class BulletShooter : MonoBehaviour
             Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-            //bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.Impulse);
-            bullet.AddForce(0.1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+            if (mi_case)
+            {
+                bullet.AddForce(0.1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+            }
+            else
+            {
+                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+            }         
 
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
             bullet.transform.LookAt(hitObjectTransform.position);
