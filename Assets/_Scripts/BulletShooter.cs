@@ -160,7 +160,7 @@ public class BulletShooter : MonoBehaviour
             }
             else
             {
-                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+                bullet.AddForce(0.3f * shotStrength * direction.normalized, ForceMode.Impulse);
             }         
 
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)

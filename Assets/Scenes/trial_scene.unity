@@ -11289,6 +11289,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1157991839}
   - {fileID: 1788084837}
   - {fileID: 336591891}
   - {fileID: 885822273}
@@ -14472,7 +14473,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 806754359}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0d297c7f6c8a2ea47bcc24194ea3036a,
         type: 3}
@@ -14600,6 +14601,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d297c7f6c8a2ea47bcc24194ea3036a, type: 3}
+--- !u!1 &1157991838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0d297c7f6c8a2ea47bcc24194ea3036a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1157991837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1157991839 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0d297c7f6c8a2ea47bcc24194ea3036a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1157991837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1176155763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28551,6 +28564,7 @@ MonoBehaviour:
   left_hand_gesture_detection: {fileID: 1340327862}
   right_hand_gesture_detection: {fileID: 1340327861}
   XR_Rig: {fileID: 795944012}
+  table_object: {fileID: 1157991838}
   L_Wrist: {fileID: 1248894054}
   R_Wrist: {fileID: 1248894055}
 --- !u!1 &1793163122 stripped
@@ -29325,7 +29339,7 @@ MonoBehaviour:
   - {fileID: 18135440}
   - {fileID: 412806308}
   - {fileID: 692665229}
-  shrink_duration: 3
+  shrink_duration: 4
   eye_gaze_interactable: {fileID: 1842305443}
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}
@@ -37946,7 +37960,7 @@ MonoBehaviour:
   - {fileID: 18135440}
   - {fileID: 412806308}
   - {fileID: 692665229}
-  shrink_duration: 3
+  shrink_duration: 4
   eye_gaze_interactable: {fileID: 2091486066}
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}
@@ -39030,6 +39044,5 @@ SceneRoots:
   - {fileID: 795944013}
   - {fileID: 806754359}
   - {fileID: 942737757}
-  - {fileID: 2007621223}
   - {fileID: 939947224}
-  - {fileID: 1157991837}
+  - {fileID: 2007621223}

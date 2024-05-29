@@ -18,6 +18,7 @@ public class OnSceneLoad : MonoBehaviour
     [SerializeField] private GameObject right_hand_gesture_detection; // Gestikfunktion der rechten Hand
 
     [SerializeField] private GameObject XR_Rig; // Kameraposition des Kopfes
+    [SerializeField] private GameObject table_object; // Position des Tisches (zum Verschieben in Level 2)
 
     [SerializeField] private GameObject L_Wrist, R_Wrist;
 
@@ -64,24 +65,19 @@ public class OnSceneLoad : MonoBehaviour
         int level = PlayerPrefs.GetInt("Level");
         if (level == 2)
         {
-            // Decrease the target size in the appropriate level
-            //new_target.transform.localScale = Vector3.one * 1.25f;
             // Increase the distance to the objects by moving the XR Rig further back
-            XR_Rig.transform.localPosition = new Vector3(2f, 0f , 0.176f);
+            XR_Rig.transform.localPosition = new Vector3(XR_Rig.transform.position.x + 2f, XR_Rig.transform.position.y , XR_Rig.transform.position.z);
+            // Move the table back too
+            table_object.transform.localPosition = new Vector3(table_object.transform.position.x + 2f, table_object.transform.position.y, table_object.transform.position.z);
 
-        }else if (level == 3)
+        }
+        else if (level == 3)
         {
             new_target.GetComponent<MoveOnSquarePath>().enabled = true;
         }
 
         // Grow all the targets over time
         StartCoroutine(GrowOverTime(new_target));
-        /* We have disabled the visual of the game objects, thus we can save some processing power
-        for (int i = 0; i < objectsToReplace.Length; i++)
-        {
-            StartCoroutine(GrowOverTime(objectsToReplace[i]));
-        }
-        */
 
         // Zeige das Textmeshpro Objekt in der Farbe der Zielscheibe an
         if (new_target.tag == "left_hand_mi")
