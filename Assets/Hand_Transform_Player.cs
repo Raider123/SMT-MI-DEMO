@@ -128,8 +128,11 @@ public class Hand_Transform_Player : MonoBehaviour
     {
         if (nameToTransformMap.TryGetValue(data.Name, out Transform targetTransform))
         {
-            targetTransform.position = data.Position;
+            Vector3 vecto3 = data.Position;
+            vecto3.y -= 0.4f;
+            targetTransform.position = vecto3; //data.Position
             targetTransform.rotation = data.Rotation;
+            
         }
         else
         {

@@ -21,14 +21,9 @@ public class ColliderReaction : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Entered Collider");
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        LeanTween.cancel(gameObject);
+        //LeanTween.cancel(gameObject);
         LeanTween.value(gameObject, SetColor, spriteRenderer.color, colorSelected, tweenDuration).setEaseInOutExpo();
 
         sphere.SetActive(true);
@@ -38,7 +33,7 @@ public class ColliderReaction : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        LeanTween.cancel(gameObject);
+        //LeanTween.cancel(gameObject);
         LeanTween.value(gameObject, SetColor, spriteRenderer.color, colorDeselected, tweenDuration).setEaseInOutExpo();
 
         sphere.SetActive(false);
