@@ -15,6 +15,8 @@ public class Hand_Transform_Player : MonoBehaviour
     private Dictionary<string, Transform> nameToTransformMap;
     private int currentIndex = 0;
 
+    private Vector3 offset_vector;
+
     void Start()
     {
         if (wrist == null)
@@ -36,6 +38,9 @@ public class Hand_Transform_Player : MonoBehaviour
         {
             Debug.LogError("No data loaded.");
         }
+
+        //Determine the offset coefficients (determined by observation and comparison of the XR Rig and the L_Wrist and R_Wrist.TXT File)
+        offset_vector = new Vector3(0.5f, 0.374f, 0.12f);
     }
 
     void CacheTransforms(Transform parent)
@@ -128,9 +133,7 @@ public class Hand_Transform_Player : MonoBehaviour
     {
         if (nameToTransformMap.TryGetValue(data.Name, out Transform targetTransform))
         {
-            Vector3 vecto3 = data.Position;
-            vecto3.y -= 0.4f;
-            targetTransform.position = vecto3; //data.Position
+            targetTransform.position = data.Position - offset_vector;
             targetTransform.rotation = data.Rotation;
             
         }

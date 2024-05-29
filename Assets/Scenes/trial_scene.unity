@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.116927415, g: 0.42217246, b: 0.7281918, a: 1}
+  m_IndirectSpecularColor: {r: 0.116066016, g: 0.4238922, b: 0.73005384, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -216,17 +216,17 @@ PrefabInstance:
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.356
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.383
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
@@ -5735,7 +5735,7 @@ Transform:
   m_GameObject: {fileID: 336591890}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.053141132, y: 3.0220878, z: -5.9649763}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12731,17 +12731,17 @@ PrefabInstance:
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.356
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.441
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
@@ -17214,17 +17214,17 @@ PrefabInstance:
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.412
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.383
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168188035806954934, guid: 632a630ce029d524bb504eae881e8bc8,
         type: 3}
@@ -27334,7 +27334,6 @@ GameObject:
   - component: {fileID: 1668098439}
   - component: {fileID: 1668098438}
   - component: {fileID: 1668098441}
-  - component: {fileID: 1668098442}
   m_Layer: 0
   m_Name: sign_right_hand
   m_TagString: Untagged
@@ -27430,22 +27429,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0799997, y: 2.0799997, z: 0.96895397}
   m_Center: {x: 0, y: 0, z: -0.38447687}
---- !u!114 &1668098442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668098437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3f4f3d91c3263439d682eec6a19b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenDuration: 0.5
-  colorDeselected: {r: 0.21960786, g: 0.07058824, b: 0.06666667, a: 0}
-  colorSelected: {r: 1, g: 1, b: 1, a: 0}
-  sphere: {fileID: 1108581451}
 --- !u!1 &1675232818
 GameObject:
   m_ObjectHideFlags: 0
@@ -37026,7 +37009,6 @@ GameObject:
   - component: {fileID: 2007192564}
   - component: {fileID: 2007192563}
   - component: {fileID: 2007192566}
-  - component: {fileID: 2007192567}
   m_Layer: 0
   m_Name: sign_left_hand
   m_TagString: Untagged
@@ -37122,22 +37104,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0799997, y: 2.0799997, z: 1.1017666}
   m_Center: {x: 0, y: 0, z: -0.4508832}
---- !u!114 &2007192567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007192562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3f4f3d91c3263439d682eec6a19b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenDuration: 0.5
-  colorDeselected: {r: 0.14901961, g: 0.03137255, b: 0.058823533, a: 0}
-  colorSelected: {r: 1, g: 1, b: 1, a: 0}
-  sphere: {fileID: 373400900}
 --- !u!1 &2007621221
 GameObject:
   m_ObjectHideFlags: 0
@@ -37154,7 +37120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2007621222
 MonoBehaviour:
   m_ObjectHideFlags: 0
