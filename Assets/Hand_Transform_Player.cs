@@ -120,6 +120,7 @@ public class Hand_Transform_Player : MonoBehaviour
         Debug.Log("Classification: " + classification);
 
         spawner_obj.GetComponent<BulletShooter>().Mi_shoot(classification);
+        // Starts the countdown in the MI-case
         start_countdown.GetComponent<Start_Trial_Timer>().StartCountdown();
     }
 
