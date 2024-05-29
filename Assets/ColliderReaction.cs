@@ -13,21 +13,35 @@ public class ColliderReaction : MonoBehaviour
     [SerializeField] private Color colorDeselected;
     [SerializeField] private Color colorSelected;
 
+    [SerializeField] private GameObject sphere;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Entered Collider");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         LeanTween.cancel(gameObject);
         LeanTween.value(gameObject, SetColor, spriteRenderer.color, colorSelected, tweenDuration).setEaseInOutExpo();
+
+        sphere.SetActive(true);
+
+
+
     }
     private void OnTriggerExit(Collider other)
     {
         LeanTween.cancel(gameObject);
         LeanTween.value(gameObject, SetColor, spriteRenderer.color, colorDeselected, tweenDuration).setEaseInOutExpo();
+
+        sphere.SetActive(false);
     }
 
     private void SetColor(Color c)
