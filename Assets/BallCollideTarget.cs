@@ -22,9 +22,13 @@ public class BallCollideTarget : MonoBehaviour
 
     [SerializeField] private XRSimpleInteractable eye_gaze_interactable; // Instanz des Eye Gaze Interactable Objekts, um die Blickrichtung zu erfassen
 
+    [SerializeField] private GameObject countDown; // Instanz eines Timerskripts zum Ansprechen der StartCountdown() Funktion nach erfolgter Kollision
+
     [SerializeField] private GameObject gesture_detection; // Instanz eines Gesture-Detection Objekts, um die Schussmöglichkeiten nach der Kollision einzuschränken
 
     [SerializeField] private GameObject Point_display; // Nach dem erfolgreichen Abschuss einer Zielscheibe direkt die Punktzahl anzeigen
+
+    [SerializeField] private GameObject bullet_mark_material; // Farbe des abgeschossenen Kreuzes
 
     static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
@@ -84,18 +88,18 @@ public class BallCollideTarget : MonoBehaviour
             new_point_display.GetComponent<TextMeshPro>().text = game_points.ToString();
             StartCoroutine(GrowOverTime(new_point_display));
 
-            //Shrinking all the objects upon collision
-            for (int i = 0; i < objectsToReplace.Length; i++)
-            {
-                StartCoroutine(ShrinkOverTime(objectsToReplace[i]));
-            }
+            // Deactivate target collision (avoid multiple collisions at once)
+            selfreference.GetComponent<MeshCollider>().enabled = false;
+            // Stop the Bullet and set its position to the collision point
+            Rigidbody bulletRigidbody = collision.rigidbody;        
+            bulletRigidbody.velocity = Vector3.zero;
+            bulletRigidbody.angularVelocity = Vector3.zero;
+            bulletRigidbody.isKinematic = true; // Deaktiviert die Physikberechnungen   
+            collision.gameObject.transform.position = collision.contacts[0].point;
+            collision.gameObject.transform.GetComponent<MeshRenderer>().material = bullet_mark_material.GetComponent<MeshRenderer>().material;
 
-            Vector3 collisionPosition = collision.contacts[0].point;
-            // Instantiate the clone of object A at the collision position
-            Instantiate(collision.gameObject, collisionPosition, Quaternion.identity);
-
-            // Destroy the object, if needed
-            Destroy(collision.gameObject);
+            // Destroy the original gameObject
+            //Destroy(collision.gameObject);
         }
     }
 
@@ -192,8 +196,6 @@ public class BallCollideTarget : MonoBehaviour
 
     private float CalculatePoints(GameObject object1, GameObject object2)
     {
-        Debug.Log("Colliding Position: " + object2.transform.position);
-
         // Berechne die Größe des Colliders
         Vector3 colliderSize = object1.GetComponent<MeshCollider>().bounds.size;
 
@@ -215,6 +217,8 @@ public class BallCollideTarget : MonoBehaviour
 
         // Runde die Genauigkeit auf zwei Dezimalstellen
         float roundedAccuracy = Mathf.Round(accuracy * 100f) / 100f;
+
+        Debug.Log("Rounded Accuracy: " + roundedAccuracy);
 
         // Punktevergabe basierend auf der Genauigkeit
         if (roundedAccuracy >= 90)

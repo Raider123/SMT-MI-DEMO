@@ -8,7 +8,7 @@ using static UnityEngine.InputSystem.Controls.AxisControl;
 public class BulletShooter : MonoBehaviour
 {
     [Tooltip("Bullet Prefab which will be shot when Finge Gun Pose Ends.")]
-    [SerializeField] private GameObject bulletPrefab;
+    public GameObject bulletPrefab;
 
     [Tooltip("Force value that determins how fast the bullet will be shot.")]
     [SerializeField] private float shotStrength = 100f;
@@ -71,30 +71,33 @@ public class BulletShooter : MonoBehaviour
                 }
 
                 // Zerstören Sie das Bullet nach einer bestimmten Zeit
-                Destroy(bullet.gameObject, 1.5f);
+                Destroy(bullet.gameObject, 3f);
             }
     }
 
     // Im MI-Fall garantieren wir immer das Treffen des Ziels. Hier werden wir extern beeinflussen, ob wir die Mitte, Dazwischen oder den äußeren Rand treffen (d.h. der Schuss wird mit dem mitgelieferten Argument vorprogrammiert)
     public void Mi_shoot(float decision_value)
     {
+        // For MI objects we don't need gravity
+        bulletPrefab.GetComponent<Rigidbody>().useGravity = false;
+        bulletPrefab.transform.rotation = Quaternion.Euler(0, 90, 0);
+        Debug.Log(bulletPrefab.transform.localEulerAngles);
+
         // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
-        bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
+        bullet = Instantiate(bulletPrefab, transform.position, bulletPrefab.transform.rotation, bulletHolder).GetComponent<Rigidbody>();
 
         // Erhalten Sie die Transform des getroffenen Gameobjects
         GameObject actual_target = target_chooser.GetComponent<OnSceneLoad>().getActualTarget();
-
         hitObjectTransform = DetermineCoordinates(actual_target, decision_value);
 
         // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
         Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
         // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-        bullet.AddForce(0.25f * shotStrength * direction.normalized, ForceMode.Impulse);
+        bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
 
         // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
         bullet.transform.LookAt(hitObjectTransform.position);
-
 
         // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
         float randomValue = Random.value;
@@ -110,10 +113,10 @@ public class BulletShooter : MonoBehaviour
         }
 
         // Zerstören Sie das Bullet nach einer bestimmten Zeit
-        Destroy(bullet.gameObject, 1.5f);
+        Destroy(bullet.gameObject, 3f);
     }
 
-    public static Transform DetermineCoordinates(GameObject original, float accuracy)
+    public Transform DetermineCoordinates(GameObject original, float accuracy)
     {
 
         // Calculate the offset based on the accuracy
@@ -132,23 +135,21 @@ public class BulletShooter : MonoBehaviour
         // Modify the y and z coordinates
         newTransform.position += new Vector3(0, 0, offset);
 
-        Debug.Log("NewPos : " + newTransform.position);
-
         return newTransform;
     }
 
     private void Update()
-    {      
+    {     
         // If we activate this method, we guide the bullet straight into the goal
         // Führen Sie den Raycast vom raycastObject aus
-        if(bullet != null)
-        {       
+        if (bullet != null)
+        {
             // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
             Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
             //bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.Impulse);
-            bullet.AddForce(0.8f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+            bullet.AddForce(0.1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
 
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
             bullet.transform.LookAt(hitObjectTransform.position);
