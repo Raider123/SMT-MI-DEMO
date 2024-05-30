@@ -30,6 +30,8 @@ public class BallCollideTarget : MonoBehaviour
 
     [SerializeField] private GameObject bullet_mark_material; // Farbe des abgeschossenen Kreuzes
 
+    [SerializeField] private GameObject rest_table_signs; // Handsymbole zum Starten der Pause (Break)
+
     static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
     private void Update()
@@ -100,6 +102,10 @@ public class BallCollideTarget : MonoBehaviour
 
             // Destroy the original gameObject
             //Destroy(collision.gameObject);
+
+            // Show the hands on the rest table 
+            rest_table_signs.SetActive(true);
+
         }
     }
 

@@ -14,7 +14,9 @@ public class BulletShooter : MonoBehaviour
     [SerializeField] private float shotStrength = 100f;
 
     [Tooltip("Das GameObject, das den Raycast durchführt")]
-    [SerializeField] private GameObject raycastObject; 
+    [SerializeField] private GameObject raycastObject;
+
+    [SerializeField] private GameObject debug_point_aim; // Experimentell: Nutzt den Eye Gaze Punkt als Fadenkreuz (anstatt Raycast)
 
     [Tooltip("Maximale Entfernung für den Raycast")]
     [SerializeField] private float maxDistance = 10f; 
@@ -40,6 +42,7 @@ public class BulletShooter : MonoBehaviour
     // Diese Methode bildet im Normalfall eine realistischere Bewegung der Geschosse zum Ziel, da sie mit der Position des Gaze Interactors zusammenfallen
     public void ShootBullet()
     {
+        /*
         // Führen Sie den Raycast vom raycastObject aus 
         if (Physics.Raycast(raycastObject.transform.position, raycastObject.transform.forward, out RaycastHit hitInfo, maxDistance))
             {
@@ -51,14 +54,13 @@ public class BulletShooter : MonoBehaviour
 
                 // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
                 Vector3 direction = hitObjectTransform.position - bullet.transform.position;
-
-                // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
-
+ 
                 // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
                 bullet.transform.LookAt(hitObjectTransform.position);
 
-
+                // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
+                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
+            
                 // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
                 float randomValue = Random.value;
 
@@ -76,7 +78,42 @@ public class BulletShooter : MonoBehaviour
                 Destroy(bullet.gameObject, 3f);
             }
 
+            mi_case = false;
+        */
+
+        //bulletPrefab.GetComponent<Rigidbody>().useGravity = false;
+        // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
+        bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
+
+        // Erhalten Sie die Transform des getroffenen Gameobjects
+        hitObjectTransform = debug_point_aim.transform;
+
+        // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
+        Vector3 direction = hitObjectTransform.position - bullet.transform.position;
+
+        // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
+        bullet.transform.LookAt(hitObjectTransform.position);
+
+        // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
+        //bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
+
+        // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
+        float randomValue = Random.value;
+
+        // Überprüfe, ob die Zufallszahl kleiner als 0.5 ist
+        if (randomValue < 0.5f)
+        {
+            shoot_audio_1.Play();
+        }
+        else
+        {
+            shoot_audio_2.Play();
+        }
+
         mi_case = false;
+
+        // Zerstören Sie das Bullet nach einer bestimmten Zeit
+        Destroy(bullet.gameObject, 3f);
     }
 
     // Im MI-Fall garantieren wir immer das Treffen des Ziels. Hier werden wir extern beeinflussen, ob wir die Mitte, Dazwischen oder den äußeren Rand treffen (d.h. der Schuss wird mit dem mitgelieferten Argument vorprogrammiert)
@@ -84,8 +121,6 @@ public class BulletShooter : MonoBehaviour
     {
         // For MI objects we don't need gravity
         bulletPrefab.GetComponent<Rigidbody>().useGravity = false;
-        bulletPrefab.transform.rotation = Quaternion.Euler(0, 90, 0);
-        Debug.Log(bulletPrefab.transform.localEulerAngles);
 
         // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
         bullet = Instantiate(bulletPrefab, transform.position, bulletPrefab.transform.rotation, bulletHolder).GetComponent<Rigidbody>();
@@ -97,11 +132,11 @@ public class BulletShooter : MonoBehaviour
         // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
         Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
-        // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-        bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
-
         // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
         bullet.transform.LookAt(hitObjectTransform.position);
+
+        // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
+        bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
 
         // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
         float randomValue = Random.value;
@@ -153,6 +188,9 @@ public class BulletShooter : MonoBehaviour
             // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
             Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
+            // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
+            bullet.transform.LookAt(hitObjectTransform.position);
+
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
             if (mi_case)
             {
@@ -160,11 +198,9 @@ public class BulletShooter : MonoBehaviour
             }
             else
             {
-                bullet.AddForce(0.3f * shotStrength * direction.normalized, ForceMode.Impulse);
+                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
             }         
 
-            // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
-            bullet.transform.LookAt(hitObjectTransform.position);
         }      
         
     }
