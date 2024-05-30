@@ -3265,7 +3265,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 976183686}
+    m_TransformParent: {fileID: 910970533}
     m_Modifications:
     - target: {fileID: 1572693335497562563, guid: a2a18ce933ea11f44b7c0145384c209f,
         type: 3}
@@ -4994,7 +4994,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1842305435}
@@ -8508,7 +8508,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576112373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 105.2}
+  m_LocalPosition: {x: 0, y: 0, z: 114.1}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -8516,7 +8516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &576112375
@@ -12241,7 +12241,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1209458433}
+    m_TransformParent: {fileID: 2010023243}
     m_Modifications:
     - target: {fileID: 410697681747861821, guid: 504bbffc8e5b4d046a66e41a4c08fb88,
         type: 3}
@@ -12408,6 +12408,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1248894049}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &910970533 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6222577279234931000, guid: d6878e1999eb4b44a9f5a263af86c185,
+    type: 3}
+  m_PrefabInstance: {fileID: 1248894049}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &911424058
 GameObject:
   m_ObjectHideFlags: 0
@@ -12453,13 +12459,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UseOptimizedControls: 0
-  m_LeftHandMesh: {fileID: 0}
-  m_RightHandMesh: {fileID: 0}
-  m_HandMeshMaterial: {fileID: 0}
+  m_LeftHandMesh: {fileID: 1531922921}
+  m_RightHandMesh: {fileID: 1124388887}
+  m_HandMeshMaterial: {fileID: -3963241562183589234, guid: b4cdcf401bd683c42b54ebbcbac76886,
+    type: 3}
   m_DrawMeshes: 1
   m_DebugDrawPrefab: {fileID: 6507399986997092475, guid: 254b742d65a15d14b9df756ae77de868,
     type: 3}
-  m_DebugDrawJoints: 0
+  m_DebugDrawJoints: 1
   m_VelocityPrefab: {fileID: 8538602047018081646, guid: 629fd7882ec6bfc499a5fcf20035282b,
     type: 3}
   m_VelocityType: 2
@@ -13510,12 +13517,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7405846476849834440, guid: c6308cb7062fac34e8e50600086b12a1,
     type: 3}
   m_PrefabInstance: {fileID: 971091404}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &976183686 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 171850577486596230, guid: d6878e1999eb4b44a9f5a263af86c185,
-    type: 3}
-  m_PrefabInstance: {fileID: 1248894049}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &988279136
 PrefabInstance:
@@ -15034,7 +15035,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2034791940}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195796074}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
@@ -15051,9 +15052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f7776535c773b4eb9e21753932da33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 4
+  countdownTime: 1
   timeText: {fileID: 1195796076}
-  next_scene_index: 2
+  next_scene_index: 3
 --- !u!1001 &1199017615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15147,12 +15148,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6239969156481072347, guid: b71b0f8d2f881c743a85228f3030d1cb,
     type: 3}
   m_PrefabInstance: {fileID: 1199017615}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1209458433 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7967630358491216647, guid: d6878e1999eb4b44a9f5a263af86c185,
-    type: 3}
-  m_PrefabInstance: {fileID: 1248894049}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1209586243
 PrefabInstance:
@@ -15879,7 +15874,7 @@ PrefabInstance:
     - target: {fileID: 1096765080775214961, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
       propertyPath: m_HideMeshWhenTrackingIsLost
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1203898232706430911, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
@@ -16125,7 +16120,7 @@ PrefabInstance:
     - target: {fileID: 3707255535797615770, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
       propertyPath: m_HideMeshWhenTrackingIsLost
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3731119764064029736, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
@@ -16404,11 +16399,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1023080754}
-    - targetCorrespondingSourceObject: {fileID: 171850577486596230, guid: d6878e1999eb4b44a9f5a263af86c185,
+    - targetCorrespondingSourceObject: {fileID: 6222577279234931000, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 185846313}
-    - targetCorrespondingSourceObject: {fileID: 7967630358491216647, guid: d6878e1999eb4b44a9f5a263af86c185,
+    - targetCorrespondingSourceObject: {fileID: 1228283487249389261, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 893890469}
@@ -18185,6 +18180,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1350656650}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MinimumHoldTime: 4
   m_GestureDetectionInterval: 0.1
   m_Highlight: {fileID: 1972990767}
@@ -18196,7 +18203,6 @@ MonoBehaviour:
   - {fileID: 1546033962}
   - {fileID: 1546033961}
   - {fileID: 1350656652}
-  - {fileID: 0}
 --- !u!114 &1350656653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20010,7 +20016,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2091486058}
@@ -27313,8 +27319,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1888679718}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29800,7 +29806,7 @@ MonoBehaviour:
   - {fileID: 18135440}
   - {fileID: 412806308}
   - {fileID: 692665229}
-  shrink_duration: 4
+  shrink_duration: 3
   eye_gaze_interactable: {fileID: 1842305443}
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}
@@ -36287,6 +36293,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1957723347}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MinimumHoldTime: 4
   m_GestureDetectionInterval: 0.01
   m_Highlight: {fileID: 1849652142}
@@ -37119,6 +37137,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1248894049}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2010023243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1228283487249389261, guid: d6878e1999eb4b44a9f5a263af86c185,
+    type: 3}
+  m_PrefabInstance: {fileID: 1248894049}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2021558158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37512,6 +37536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Countdown_Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807923404254286599, guid: 61e75e127cfdbdb4db7e1eb4f6372c2c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5424652677924487101, guid: 61e75e127cfdbdb4db7e1eb4f6372c2c,
         type: 3}
@@ -38518,7 +38547,7 @@ MonoBehaviour:
   - {fileID: 18135440}
   - {fileID: 412806308}
   - {fileID: 692665229}
-  shrink_duration: 4
+  shrink_duration: 3
   eye_gaze_interactable: {fileID: 2091486066}
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}

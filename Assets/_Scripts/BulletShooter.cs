@@ -81,7 +81,7 @@ public class BulletShooter : MonoBehaviour
             mi_case = false;
         */
 
-        //bulletPrefab.GetComponent<Rigidbody>().useGravity = false;
+        bulletPrefab.GetComponent<Rigidbody>().useGravity = false;
         // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
         bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
 
@@ -95,7 +95,7 @@ public class BulletShooter : MonoBehaviour
         bullet.transform.LookAt(hitObjectTransform.position);
 
         // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-        //bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
+        bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
 
         // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
         float randomValue = Random.value;
@@ -185,11 +185,11 @@ public class BulletShooter : MonoBehaviour
         // Führen Sie den Raycast vom raycastObject aus
         if (bullet != null)
         {
-            // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
-            Vector3 direction = hitObjectTransform.position - bullet.transform.position;
-
             // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
             bullet.transform.LookAt(hitObjectTransform.position);
+
+            // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
+            Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
             if (mi_case)
@@ -198,7 +198,9 @@ public class BulletShooter : MonoBehaviour
             }
             else
             {
-                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+                // Either completly using acceleration and gravity off (better because then different aiming required) ->different level?
+                //bullet.AddForce(3f * shotStrength * direction.normalized, ForceMode.Acceleration);
+                bullet.AddForce(0.1f * shotStrength * direction.normalized, ForceMode.Impulse);
             }         
 
         }      
