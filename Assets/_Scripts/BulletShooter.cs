@@ -105,6 +105,7 @@ public class BulletShooter : MonoBehaviour
         }
 
         mi_case = true;
+        Debug.Log("Goal: " + hitObjectTransform.position);
 
         // Zerstören Sie das Bullet nach einer bestimmten Zeit
         Destroy(bullet.gameObject, 3f);
@@ -147,7 +148,7 @@ public class BulletShooter : MonoBehaviour
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
             if (mi_case)
             {
-                bullet.AddForce(0.1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
+                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.VelocityChange);
             }
             else
             {

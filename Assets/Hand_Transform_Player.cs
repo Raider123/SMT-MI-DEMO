@@ -10,6 +10,7 @@ public class Hand_Transform_Player : MonoBehaviour
     public GameObject start_countdown;
     public GameObject wrist; // Specifies the "Wrist" GameObject
     public string fileName;
+    public float class_value; // Spezifiziert die Klassifikationsgenauigkeit
 
     private string folderName = "Hand_Transform_Runtime_Data";
     private TransformData[] recordedData;
@@ -20,6 +21,10 @@ public class Hand_Transform_Player : MonoBehaviour
 
     void Start()
     {
+        // Determine the classification value (here only temporary)
+        float class_value = Random.Range(50.0f, 100.0f);
+        Debug.Log("Classification: " + class_value);
+
         //Determine the offset coefficients (determined by observation and comparison of the XR Rig and the L_Wrist and R_Wrist.TXT File)
         int level = PlayerPrefs.GetInt("Level");
         if (level == 2)
@@ -130,10 +135,8 @@ public class Hand_Transform_Player : MonoBehaviour
             yield return null;
         }
 
-        float classification = Random.value * 100;
-        Debug.Log("Classification: " + classification);
-
-        spawner_obj.GetComponent<BulletShooter>().Mi_shoot(classification);
+     
+        spawner_obj.GetComponent<BulletShooter>().Mi_shoot(class_value);
         // Starts the countdown in the MI-case
         start_countdown.GetComponent<Start_Trial_Timer>().StartCountdown();
     }

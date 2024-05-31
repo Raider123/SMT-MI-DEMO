@@ -14,9 +14,6 @@ public class OnLevelManagerStart : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        PlayerPrefs.SetInt("Level", 2);
-        PlayerPrefs.Save();
-
         int level = PlayerPrefs.GetInt("Level");
 
         if (level == 0)
