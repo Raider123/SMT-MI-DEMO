@@ -11,8 +11,8 @@ public class MI_Trial_Timer : MonoBehaviour
 {
     [SerializeField] private float mi_trial_time = 2f; // Zeit in Sekunden für den Countdown im MI-Fall (zugleich die MI-Zeit)
     [SerializeField] private GameObject targetchooser; // Eine Referenz auf das Targetchooser Objekt, um das Tag des aktuellen Targets (left_hand, right_hand) zu erfragen
-    [SerializeField] private GameObject L_Mock_Hand, R_Mock_Hand; // Eine Referenz auf die die "Echten"-Hände Objekte
-    [SerializeField] private GameObject real_left_hand, real_right_hand;
+    [SerializeField] private GameObject L_Mock_Hand, R_Mock_Hand; // Eine Referenz auf die fake Hände
+    [SerializeField] private GameObject real_left_hand, real_right_hand; //Eine Referenz auf die "Echten"-Hände Objekte
 
     private float currentTime = 0f;
     private bool isCounting = false;

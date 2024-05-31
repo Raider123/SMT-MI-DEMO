@@ -32,6 +32,8 @@ public class BallCollideTarget : MonoBehaviour
 
     [SerializeField] private GameObject rest_table_signs; // Handsymbole zum Starten der Pause (Break)
 
+    [SerializeField] private GameObject mi_trial_timer; // Instanz des MI-Trial Timer Objekts, um den Zustand MI oder Nicht-MI zu erfassen
+
     static float achievement_score; // Zählt den aktuellen Punktestand auf globaler Weise
 
     private void Update()
@@ -48,6 +50,7 @@ public class BallCollideTarget : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     private void OnCollisionEnter(Collision collision)
     {
         // Compare the tag of both collision partners
@@ -104,7 +107,10 @@ public class BallCollideTarget : MonoBehaviour
             //Destroy(collision.gameObject);
 
             // Show the hands on the rest table 
-            rest_table_signs.SetActive(true);
+            if (!mi_trial_timer.active)
+            {
+                rest_table_signs.SetActive(true);
+            }
 
         }
     }

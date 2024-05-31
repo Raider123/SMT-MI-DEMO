@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
+
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEngine.InputSystem.Controls.AxisControl;
+
 
 public class BulletShooter : MonoBehaviour
 {
@@ -13,13 +10,7 @@ public class BulletShooter : MonoBehaviour
     [Tooltip("Force value that determins how fast the bullet will be shot.")]
     [SerializeField] private float shotStrength = 100f;
 
-    [Tooltip("Das GameObject, das den Raycast durchführt")]
-    [SerializeField] private GameObject raycastObject;
-
     [SerializeField] private GameObject debug_point_aim; // Experimentell: Nutzt den Eye Gaze Punkt als Fadenkreuz (anstatt Raycast)
-
-    [Tooltip("Maximale Entfernung für den Raycast")]
-    [SerializeField] private float maxDistance = 10f; 
 
     [Tooltip("Die Audiosource, die beim Abschuss gespielt wird")]
     [SerializeField] private AudioSource shoot_audio_1;
@@ -42,50 +33,12 @@ public class BulletShooter : MonoBehaviour
     // Diese Methode bildet im Normalfall eine realistischere Bewegung der Geschosse zum Ziel, da sie mit der Position des Gaze Interactors zusammenfallen
     public void ShootBullet()
     {
-        /*
-        // Führen Sie den Raycast vom raycastObject aus 
-        if (Physics.Raycast(raycastObject.transform.position, raycastObject.transform.forward, out RaycastHit hitInfo, maxDistance))
-            {
-                // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
-                bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
-
-                // Erhalten Sie die Transform des getroffenen Gameobjects
-                hitObjectTransform = hitInfo.collider.transform;
-
-                // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
-                Vector3 direction = hitObjectTransform.position - bullet.transform.position;
- 
-                // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
-                bullet.transform.LookAt(hitObjectTransform.position);
-
-                // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
-                bullet.AddForce(1f * shotStrength * direction.normalized, ForceMode.Impulse);
-            
-                // Spiele den Audioclip ab (mit Variation zwischen Clip 1 und Clip 2)
-                float randomValue = Random.value;
-
-                // Überprüfe, ob die Zufallszahl kleiner als 0.5 ist
-                if (randomValue < 0.5f)
-                {
-                    shoot_audio_1.Play();
-                }
-                else
-                {
-                    shoot_audio_2.Play();
-                }
-
-                // Zerstören Sie das Bullet nach einer bestimmten Zeit
-                Destroy(bullet.gameObject, 3f);
-            }
-
-            mi_case = false;
-        */
 
         bulletPrefab.GetComponent<Rigidbody>().useGravity = false;
         // Erstellen Sie das Bullet und fügen Sie ihm eine Kraft hinzu
         bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, bulletHolder).GetComponent<Rigidbody>();
 
-        // Erhalten Sie die Transform des getroffenen Gameobjects
+        // Erhalten Sie die Transform des getroffenen Gameobjects (einmalig abspeichern)
         hitObjectTransform = debug_point_aim.transform;
 
         // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
@@ -200,7 +153,7 @@ public class BulletShooter : MonoBehaviour
             {
                 // Either completly using acceleration and gravity off (better because then different aiming required) ->different level?
                 //bullet.AddForce(3f * shotStrength * direction.normalized, ForceMode.Acceleration);
-                bullet.AddForce(0.1f * shotStrength * direction.normalized, ForceMode.Impulse);
+                bullet.AddForce(0.25f * shotStrength * direction.normalized, ForceMode.Impulse);
             }         
 
         }      

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.116066016, g: 0.4238922, b: 0.73005384, a: 1}
+  m_IndirectSpecularColor: {r: 0.11613609, g: 0.42406118, b: 0.73004735, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8508,7 +8508,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576112373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 114.1}
+  m_LocalPosition: {x: 0, y: 0, z: 103.2}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -14870,12 +14870,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0d297c7f6c8a2ea47bcc24194ea3036a,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4607668393258877731, guid: 0d297c7f6c8a2ea47bcc24194ea3036a,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15052,9 +15052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f7776535c773b4eb9e21753932da33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 1
+  countdownTime: 2
   timeText: {fileID: 1195796076}
-  next_scene_index: 3
+  next_scene_index: 2
 --- !u!1001 &1199017615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29813,6 +29813,7 @@ MonoBehaviour:
   Point_display: {fileID: 195132364}
   bullet_mark_material: {fileID: 113319441}
   rest_table_signs: {fileID: 265334952}
+  mi_trial_timer: {fileID: 2007621221}
 --- !u!82 &1842305440
 AudioSource:
   m_ObjectHideFlags: 0
@@ -37001,7 +37002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2007621222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38554,6 +38555,7 @@ MonoBehaviour:
   Point_display: {fileID: 195132364}
   bullet_mark_material: {fileID: 113319441}
   rest_table_signs: {fileID: 265334952}
+  mi_trial_timer: {fileID: 2007621221}
 --- !u!82 &2091486063
 AudioSource:
   m_ObjectHideFlags: 0

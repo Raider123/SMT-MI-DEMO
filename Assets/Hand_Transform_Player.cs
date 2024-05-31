@@ -2,6 +2,7 @@ using UnityEngine;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Hand_Transform_Player : MonoBehaviour
 {
@@ -19,6 +20,17 @@ public class Hand_Transform_Player : MonoBehaviour
 
     void Start()
     {
+        //Determine the offset coefficients (determined by observation and comparison of the XR Rig and the L_Wrist and R_Wrist.TXT File)
+        int level = PlayerPrefs.GetInt("Level");
+        if (level == 2)
+        {
+            offset_vector = new Vector3(0.5f - 2f, 0.374f, 0.12f);
+        }
+        else
+        {
+            offset_vector = new Vector3(0.5f, 0.374f, 0.12f);
+        }
+
         if (wrist == null)
         {
             Debug.LogError("Wrist GameObject is not assigned.");
@@ -38,9 +50,6 @@ public class Hand_Transform_Player : MonoBehaviour
         {
             Debug.LogError("No data loaded.");
         }
-
-        //Determine the offset coefficients (determined by observation and comparison of the XR Rig and the L_Wrist and R_Wrist.TXT File)
-        offset_vector = new Vector3(0.5f, 0.374f, 0.12f);
     }
 
     void CacheTransforms(Transform parent)
