@@ -105,7 +105,6 @@ public class BulletShooter : MonoBehaviour
         }
 
         mi_case = true;
-        Debug.Log("Goal: " + hitObjectTransform.position);
 
         // Zerstören Sie das Bullet nach einer bestimmten Zeit
         Destroy(bullet.gameObject, 3f);
@@ -128,7 +127,7 @@ public class BulletShooter : MonoBehaviour
         newTransform.localScale = original.transform.localScale;
 
         // Modify the y and z coordinates
-        newTransform.position += new Vector3(0, 0, offset);
+        newTransform.position += new Vector3(0, offset, 0);
 
         return newTransform;
     }

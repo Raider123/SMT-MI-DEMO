@@ -15052,7 +15052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f7776535c773b4eb9e21753932da33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 2
+  countdownTime: 2.5
   timeText: {fileID: 1195796076}
   next_scene_index: 2
 --- !u!1001 &1199017615
@@ -25771,6 +25771,7 @@ MonoBehaviour:
   start_countdown: {fileID: 1195796074}
   wrist: {fileID: 1597903155}
   fileName: Left_Hand.txt
+  class_value: 0
 --- !u!1 &1597903157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2119128821997336139, guid: ffd656bf2a3ba3d41b1e4a94b81b7c85,
@@ -26180,6 +26181,7 @@ MonoBehaviour:
   start_countdown: {fileID: 1195796074}
   wrist: {fileID: 1608516682}
   fileName: Right_Hand.txt
+  class_value: 0
 --- !u!1 &1608516684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2746493918707896725, guid: 89e80c47615e4f043926d66492d3ca5f,
@@ -29806,7 +29808,7 @@ MonoBehaviour:
   - {fileID: 18135440}
   - {fileID: 412806308}
   - {fileID: 692665229}
-  shrink_duration: 3
+  shrink_duration: 2.5
   eye_gaze_interactable: {fileID: 1842305443}
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}
@@ -38548,7 +38550,7 @@ MonoBehaviour:
   - {fileID: 18135440}
   - {fileID: 412806308}
   - {fileID: 692665229}
-  shrink_duration: 3
+  shrink_duration: 2.5
   eye_gaze_interactable: {fileID: 2091486066}
   countDown: {fileID: 1195796074}
   gesture_detection: {fileID: 1716103598}

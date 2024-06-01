@@ -22,7 +22,7 @@ public class Hand_Transform_Player : MonoBehaviour
     void Start()
     {
         // Determine the classification value (here only temporary)
-        float class_value = Random.Range(50.0f, 100.0f);
+        this.class_value = Random.Range(50.0f, 100.0f);
         Debug.Log("Classification: " + class_value);
 
         //Determine the offset coefficients (determined by observation and comparison of the XR Rig and the L_Wrist and R_Wrist.TXT File)
@@ -135,8 +135,8 @@ public class Hand_Transform_Player : MonoBehaviour
             yield return null;
         }
 
-     
-        spawner_obj.GetComponent<BulletShooter>().Mi_shoot(class_value);
+        // Shoots a bullet in the MI-case
+        spawner_obj.GetComponent<BulletShooter>().Mi_shoot(this.class_value);
         // Starts the countdown in the MI-case
         start_countdown.GetComponent<Start_Trial_Timer>().StartCountdown();
     }

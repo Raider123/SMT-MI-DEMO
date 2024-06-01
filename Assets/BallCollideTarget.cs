@@ -58,7 +58,6 @@ public class BallCollideTarget : MonoBehaviour
         // In previous versions we also required eye gaze to be active (eye_gaze_interactable.isHovered), but as the collision itself is only part of the reward/break and not MI, we can neglect it
         if (selfreference.tag == collision.gameObject.tag)
         {
-            Debug.Log("Collision " + collision.gameObject.transform.position);
             // Deaktiviere weitere Schussmöglichkeiten
             gesture_detection.gameObject.SetActive(false);
 
@@ -231,7 +230,7 @@ public class BallCollideTarget : MonoBehaviour
         // Runde die Genauigkeit auf zwei Dezimalstellen
         float roundedAccuracy = Mathf.Round(accuracy);
 
-        Debug.Log("Z: " + zDistance + "Y: " + yDistance + " Rounded Accuracy: " + roundedAccuracy);
+        Debug.Log("CalcAcc: " + roundedAccuracy);
 
         // Punktevergabe basierend auf der Genauigkeit
         if (roundedAccuracy >= 90)
