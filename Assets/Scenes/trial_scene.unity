@@ -8493,6 +8493,7 @@ GameObject:
   - component: {fileID: 576112374}
   - component: {fileID: 576112376}
   - component: {fileID: 576112375}
+  - component: {fileID: 576112377}
   m_Layer: 5
   m_Name: Eye_Debug_Image
   m_TagString: Untagged
@@ -8557,6 +8558,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576112373}
   m_CullTransparentMesh: 1
+--- !u!114 &576112377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576112373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977f3d0527783c04cbb0487b63f857b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 576112375}
+  newColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &577011365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16079,12 +16094,12 @@ PrefabInstance:
     - target: {fileID: 3237230896655369491, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
       propertyPath: m_GazeAssistanceColliderScale
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3237230896655369491, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
       propertyPath: m_GazeAssistanceDistanceScaling
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3272665201281909261, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
@@ -18191,6 +18206,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 265334952}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   m_MinimumHoldTime: 4
   m_GestureDetectionInterval: 0.1
@@ -29711,9 +29738,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: fb479a82031a84340a4271a174b79ab2,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 4875329586141879171, guid: 0053ee47b90e3c441a6871035bca1bb6,
+        type: 3}
+    - target: {fileID: -7511558181221131132, guid: fb479a82031a84340a4271a174b79ab2,
+        type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 5750f18e988befc4f9a61a61a7da484a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: fb479a82031a84340a4271a174b79ab2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 7390553463975553142, guid: 7ab6f3b0fd1a6ba41b2a47766c16613f,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: fb479a82031a84340a4271a174b79ab2,
         type: 3}
       propertyPath: m_Name
@@ -29972,6 +30011,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 576112377}
+        m_TargetAssemblyTypeName: ChangeImageColor, Assembly-CSharp
+        m_MethodName: ChangeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls:
@@ -29979,6 +30030,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 576112377}
+        m_TargetAssemblyTypeName: ChangeImageColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -36373,6 +36436,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 265334952}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_MinimumHoldTime: 4
   m_GestureDetectionInterval: 0.01
   m_Highlight: {fileID: 1849652142}
@@ -38447,17 +38522,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fb479a82031a84340a4271a174b79ab2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 178.28618
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb479a82031a84340a4271a174b79ab2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 72.108
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb479a82031a84340a4271a174b79ab2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.775
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb479a82031a84340a4271a174b79ab2,
         type: 3}
@@ -38761,6 +38836,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 576112377}
+        m_TargetAssemblyTypeName: ChangeImageColor, Assembly-CSharp
+        m_MethodName: ChangeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls:
@@ -38768,6 +38855,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 576112377}
+        m_TargetAssemblyTypeName: ChangeImageColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
