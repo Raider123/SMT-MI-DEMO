@@ -106,11 +106,13 @@ public class BallCollideTarget : MonoBehaviour
             // Destroy the original gameObject
             //Destroy(collision.gameObject);
 
+            /*
             // Show the hands on the rest table 
             if (!mi_trial_timer.active)
             {
                 rest_table_signs.SetActive(true);
             }
+            */
 
         }
     }

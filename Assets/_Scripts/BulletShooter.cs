@@ -28,6 +28,8 @@ public class BulletShooter : MonoBehaviour
 
     private Transform hitObjectTransform;
 
+    private Vector3 direction;
+
     private bool mi_case;
 
     // Diese Methode bildet im Normalfall eine realistischere Bewegung der Geschosse zum Ziel, da sie mit der Position des Gaze Interactors zusammenfallen
@@ -42,7 +44,7 @@ public class BulletShooter : MonoBehaviour
         hitObjectTransform = debug_point_aim.transform;
 
         // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
-        Vector3 direction = hitObjectTransform.position - bullet.transform.position;
+        direction = hitObjectTransform.position - bullet.transform.position;
 
         // Drehen Sie das Bullet, um es in Richtung des Ziels zu richten (optional)
         bullet.transform.LookAt(hitObjectTransform.position);
@@ -142,7 +144,7 @@ public class BulletShooter : MonoBehaviour
             bullet.transform.LookAt(hitObjectTransform.position);
 
             // Erhalten Sie die Richtung zum getroffenen Punkt (in y und z Richtung)
-            Vector3 direction = hitObjectTransform.position - bullet.transform.position;
+            //Vector3 direction = hitObjectTransform.position - bullet.transform.position;
 
             // Fügen Sie dem Bullet eine Anziehungskraft hinzu, um es zum getroffenen Punkt zu ziehen
             if (mi_case)
