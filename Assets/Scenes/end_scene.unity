@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11613609, g: 0.42406118, b: 0.73004735, a: 1}
+  m_IndirectSpecularColor: {r: 0.116927415, g: 0.42217246, b: 0.7281918, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8651,7 +8651,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Wiederhole
 
-    Level 1'
+    Level 1
+
+    (2s)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8ac1ed6123904112adeaf50e63c4731, type: 2}
   m_sharedMaterial: {fileID: 1693478669045529817, guid: c8ac1ed6123904112adeaf50e63c4731,
@@ -13436,8 +13438,8 @@ MonoBehaviour:
   repeat_button_text: {fileID: 1039318910}
   next_level_text: {fileID: 1843971607}
   locked_button_text: {fileID: 1372642813}
-  min_points_lvl2: 10
-  min_points_lvl3: 40
+  min_points_lvl2: 120
+  min_points_lvl3: 1000
 --- !u!114 &1485676885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21791,7 +21793,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 2
+  m_text: 'Level 2
+
+    (2s)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8ac1ed6123904112adeaf50e63c4731, type: 2}
   m_sharedMaterial: {fileID: 1693478669045529817, guid: c8ac1ed6123904112adeaf50e63c4731,
