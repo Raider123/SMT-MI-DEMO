@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11613609, g: 0.42406118, b: 0.73004735, a: 1}
+  m_IndirectSpecularColor: {r: 0.11613611, g: 0.42406112, b: 0.73004746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22241,7 +22241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownTime: 3
   timeText: {fileID: 2034791942}
-  max_num_of_trials: 8
+  max_num_of_trials: 10
   trial_scene_index: 1
   end_scene_index: 3
 --- !u!1001 &2040873012

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11613609, g: 0.42406118, b: 0.73004735, a: 1}
+  m_IndirectSpecularColor: {r: 0.11613611, g: 0.42406112, b: 0.73004746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15006,6 +15006,7 @@ MonoBehaviour:
   start_countdown: {fileID: 0}
   wrist: {fileID: 1079713879}
   fileName: Right_Hand.txt
+  class_value: 0
 --- !u!114 &1079713883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22801,6 +22802,7 @@ MonoBehaviour:
   start_countdown: {fileID: 0}
   wrist: {fileID: 1910834459}
   fileName: Left_Hand.txt
+  class_value: 0
 --- !u!1001 &1915570343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23450,6 +23452,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2946824766914411943, guid: 61e75e127cfdbdb4db7e1eb4f6372c2c,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2034791945}
+    - targetCorrespondingSourceObject: {fileID: 2946824766914411943, guid: 61e75e127cfdbdb4db7e1eb4f6372c2c,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 61e75e127cfdbdb4db7e1eb4f6372c2c, type: 3}
 --- !u!1 &2034791941 stripped
@@ -23500,6 +23506,19 @@ MonoBehaviour:
   countdownTime: 2
   timeText: {fileID: 2034791942}
   next_sceneIndex: 1
+--- !u!114 &2034791945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034791941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39880442402981a4f8f3bd29a6e6f7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraYOffset: 1
 --- !u!1001 &2043576060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24645,8 +24664,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 520033912}
   - {fileID: 587141842}
-  - {fileID: 795944013}
-  - {fileID: 1485676882}
   - {fileID: 2034791940}
   - {fileID: 1173922382}
+  - {fileID: 795944013}
+  - {fileID: 1485676882}
   - {fileID: 785330516}
