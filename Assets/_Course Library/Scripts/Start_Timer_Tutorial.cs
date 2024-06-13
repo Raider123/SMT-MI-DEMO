@@ -31,7 +31,7 @@ public class Start_Timer_Tutorial : MonoBehaviour
                 // This Timer initiates Level 0 (Tutorial)
                 PlayerPrefs.SetInt("Level", 0);
                 PlayerPrefs.Save();
-
+             
                 // Load the next scene
                 SceneManager.LoadScene(next_sceneIndex);
             }

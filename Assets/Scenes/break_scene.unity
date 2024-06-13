@@ -22208,6 +22208,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2946824766914411943, guid: 61e75e127cfdbdb4db7e1eb4f6372c2c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2034791944}
   m_SourcePrefab: {fileID: 100100000, guid: 61e75e127cfdbdb4db7e1eb4f6372c2c, type: 3}
 --- !u!1 &2034791941 stripped
 GameObject:
@@ -22241,9 +22245,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownTime: 3
   timeText: {fileID: 2034791942}
-  max_num_of_trials: 8
+  max_num_of_trials: 10
   trial_scene_index: 1
   end_scene_index: 3
+--- !u!114 &2034791944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034791941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30820c968c213b443970b8fee9bcc880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XR_RIG: {fileID: 1248894051}
 --- !u!1001 &2040873012
 PrefabInstance:
   m_ObjectHideFlags: 0
