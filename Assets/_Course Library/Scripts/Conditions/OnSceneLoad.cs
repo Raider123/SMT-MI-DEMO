@@ -19,6 +19,7 @@ public class OnSceneLoad : MonoBehaviour
 
     [SerializeField] private GameObject XR_Rig; // Kameraposition des Kopfes
     [SerializeField] private GameObject table_object; // Position des Tisches (zum Verschieben in Level 2)
+    [SerializeField] private GameObject eye_debug_point; // Zum Verschieben des Eye-Debug Points in Level 2
 
     [SerializeField] private GameObject L_Wrist, R_Wrist;
 
@@ -69,6 +70,8 @@ public class OnSceneLoad : MonoBehaviour
             XR_Rig.transform.localPosition = new Vector3(XR_Rig.transform.position.x + 2f, XR_Rig.transform.position.y , XR_Rig.transform.position.z);
             // Move the table back too
             table_object.transform.localPosition = new Vector3(table_object.transform.position.x + 2f, table_object.transform.position.y, table_object.transform.position.z);
+            // Move the crosshair back too
+            eye_debug_point.transform.localPosition = new Vector3(eye_debug_point.transform.localPosition.x, eye_debug_point.transform.localPosition.y, eye_debug_point.transform.localPosition.z + 40f);
 
         }
         else if (level == 3)

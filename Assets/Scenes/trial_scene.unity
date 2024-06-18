@@ -28702,6 +28702,7 @@ MonoBehaviour:
   right_hand_gesture_detection: {fileID: 1340327861}
   XR_Rig: {fileID: 795944012}
   table_object: {fileID: 526579656}
+  eye_debug_point: {fileID: 576112373}
   L_Wrist: {fileID: 1248894054}
   R_Wrist: {fileID: 1248894055}
 --- !u!1 &1793163122 stripped
