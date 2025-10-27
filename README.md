@@ -34,7 +34,7 @@ All gameplay scripts and logic are located in: /Assets/
 
 Players begin stationary behind a table and can choose between the tutorial and the game mode.
 
-![Start Screen](assets/screenshots/start.png)
+![Start Screen](/assets/screenshots/start.png)
 
 ---
 
