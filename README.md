@@ -34,7 +34,7 @@ All gameplay scripts and logic are located in: /Assets/
 
 Players begin stationary behind a table and can choose between the tutorial and the game mode.
 
-![Start Screen](/assets/screenshots/start.png)
+![Start Screen](Assets/screenshots/start.png)
 
 ---
 
@@ -42,7 +42,7 @@ Players begin stationary behind a table and can choose between the tutorial and 
 
 The tutorial explains how to use **hand gestures** to interact with the game — no controllers required.
 
-![Hand Gesture Tutorial](assets/screenshots/tutorial.png)
+![Hand Gesture Tutorial](Assets/screenshots/tutorial.png)
 
 ---
 
@@ -55,7 +55,7 @@ The game alternates between **motor priming** and **motor imagery** phases:
 - **Feedback** → Score and reward feedback
 - **Rest** → Short break before the next trial
 
-![Gameplay Flow](assets/screenshots/game_flow.png)
+![Gameplay Flow](Assets/screenshots/game_flow.png)
 
 ---
 
